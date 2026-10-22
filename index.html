@@ -28,7 +28,6 @@
   body{
     margin:0;min-height:100dvh;background-color:var(--bg);color:var(--tx);
     font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.65;padding:16px 16px 32px;
-    /* پس زمینه با کدری کمتر تا عکس دیده شود */
     background-image:linear-gradient(rgba(247,245,242,.65),rgba(247,245,242,.8)),
       url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop');
     background-size:cover;background-position:center;background-attachment:fixed;
@@ -352,57 +351,57 @@ const SHAPE_EN = {oval:"Oval",round:"Round",square:"Square",heart:"Heart",oblong
 const LEN_FA = {short:"کوتاه",medium:"متوسط",long:"بلند"};
 const VIBE_FA = {classic:"کلاسیک",modern:"مدرن",edgy:"جسورانه",elegant:"شیک"};
 
-// تصاویر پیش‌فرض برای هر مدل (برای جلوگیری از خرابی ظاهر)
 const FALLBACK_IMG = "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop";
 
-/* ==================== HAIRSTYLE DATABASE (36+ styles) ==================== */
+/* ==================== HAIRSTYLE DATABASE (MEN ONLY) ==================== */
 const HAIRSTYLES = [
-  // Oval
+  // Oval (بیضی)
   {id:"ov-1", fa:"تیپر کلاسیک", en:"Classic Taper", len:"short", vibe:"classic", shapes:["oval"], why:"تعادل طبیعی خط فک بیضی را برجسته می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
   {id:"ov-2", fa:"پامپادور", en:"Pompadour", len:"short", vibe:"classic", shapes:["oval"], why:"حجم بالایی ایجاد می‌کند که نسبت طلایی صورت را تقویت می‌کند", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
   {id:"ov-3", fa:"کویف مدرن", en:"Modern Quiff", len:"short", vibe:"modern", shapes:["oval"], why:"حرکت عمودی، طول صورت بیضی را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
   {id:"ov-4", fa:"فرق کناری", en:"Side Part", len:"short", vibe:"classic", shapes:["oval"], why:"خط فرق، تقارن طبیعی صورت را برجسته می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
-  {id:"ov-5", fa:"فلو متوسط", en:"Mid-Length Flow", len:"medium", vibe:"elegant", shapes:["oval"], why:"جریان طبیعی مو، نرمی فرم بیضی را تکمیل می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
-  {id:"ov-6", fa:"باز فید", en:"Buzz Fade", len:"short", vibe:"edgy", shapes:["oval"], why:"مینیمالیسم جسورانه، فرم متعادل بیضی را نمایش می‌دهد", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
+  {id:"ov-5", fa:"اسلیک بک", en:"Slick Back", len:"short", vibe:"elegant", shapes:["oval"], why:"ظاهری رسمی و شیک برای فرم‌های متعادل", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"ov-6", fa:"باز فید", en:"Buzz Cut", len:"short", vibe:"edgy", shapes:["oval"], why:"مینیمالیسم جسورانه، فرم متعادل بیضی را نمایش می‌دهد", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
 
-  // Round
+  // Round (گرد)
   {id:"rd-1", fa:"فید بلند", en:"High Fade", len:"short", vibe:"modern", shapes:["round"], why:"کناره‌های کوتاه، عرض صورت را کاهش می‌دهد", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
-  {id:"rd-2", fa:"پامپ فید", en:"Pomp Fade", len:"short", vibe:"classic", shapes:["round"], why:"ارتفاع بالای سر، فرم گرد را کشیده‌تر نشان می‌دهد", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
-  {id:"rd-3", fa:"کویف حجم", en:"Voluminous Quiff", len:"short", vibe:"modern", shapes:["round"], why:"حجم عمودی، توهم طول در صورت گرد ایجاد می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
-  {id:"rd-4", fa:"تاپ بافت", en:"Textured Top", len:"short", vibe:"edgy", shapes:["round"], why:"بافت نامتقارن، گردی صورت را می‌شکند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
-  {id:"rd-5", fa:"لایه‌های بلند", en:"Long Layers", len:"long", vibe:"elegant", shapes:["round"], why:"لایه‌های عمودی، خطوط صورت را کشیده نشان می‌دهند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"rd-2", fa:"فاکس هاوک", en:"Faux Hawk", len:"short", vibe:"edgy", shapes:["round"], why:"حجم مرکزی، فرم گرد را کشیده‌تر نشان می‌دهد", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
+  {id:"rd-3", fa:"کویف حجم‌دار", en:"Voluminous Quiff", len:"short", vibe:"modern", shapes:["round"], why:"حجم عمودی، توهم طول در صورت گرد ایجاد می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"rd-4", fa:"چتری زاویه‌دار", en:"Angular Fringe", len:"short", vibe:"modern", shapes:["round"], why:"خطوط تیز، گردی صورت را می‌شکند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"rd-5", fa:"فرق کناری با حجم", en:"Side Part Volume", len:"short", vibe:"classic", shapes:["round"], why:"ارتفاع و عدم تقارن برای تعادل بخشیدن", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
 
-  // Square
+  // Square (مربعی)
   {id:"sq-1", fa:"فرق نرم", en:"Soft Side Part", len:"short", vibe:"classic", shapes:["square"], why:"نرمی خطوط، گوشه‌های فک مربعی را تلطیف می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
   {id:"sq-2", fa:"کویف بافت", en:"Textured Quiff", len:"short", vibe:"modern", shapes:["square"], why:"بافت بالا، تعادل با فک قوی ایجاد می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
   {id:"sq-3", fa:"فید پایین", en:"Low Fade", len:"short", vibe:"modern", shapes:["square"], why:"انتقال تدریجی، خط فک قوی را نرم می‌کند", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
   {id:"sq-4", fa:"کرو کات", en:"Crew Cut", len:"short", vibe:"classic", shapes:["square"], why:"مینیمال و متقارن، قدرت فک را برجسته می‌کند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
   {id:"sq-5", fa:"من بان", en:"Man Bun", len:"long", vibe:"edgy", shapes:["square"], why:"جمع‌کردن مو، خط فک را آزاد و برجسته می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
 
-  // Heart
+  // Heart (قلبی)
   {id:"he-1", fa:"فرق متوسط", en:"Medium Side Part", len:"medium", vibe:"classic", shapes:["heart"], why:"حجم کناری، تعادل با پیشانی پهن ایجاد می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
-  {id:"he-2", fa:"پرده‌ای", en:"Curtain", len:"medium", vibe:"modern", shapes:["heart"], why:"پوشش کناری پیشانی، عرض آن را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
-  {id:"he-3", fa:"چتری", en:"Fringe", len:"short", vibe:"modern", shapes:["heart"], why:"چتری، پیشانی پهن را می‌پوشاند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
-  {id:"he-4", fa:"باب", en:"Bob", len:"medium", vibe:"elegant", shapes:["heart"], why:"خطوط افقی، چانه باریک را متعادل می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
-  {id:"he-5", fa:"لایه‌های بلند", en:"Long Layers", len:"long", vibe:"elegant", shapes:["heart"], why:"حجم پایین، با چانه باریک هماهنگ می‌شود", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"he-2", fa:"موی پرده‌ای", en:"Curtain Hair", len:"medium", vibe:"modern", shapes:["heart"], why:"پوشش کناری پیشانی، عرض آن را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"he-3", fa:"چتری شلخته", en:"Tousled Fringe", len:"short", vibe:"modern", shapes:["heart"], why:"چتری، پیشانی پهن را می‌پوشاند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"he-4", fa:"کراپ بافت‌دار", en:"Textured Crop", len:"short", vibe:"modern", shapes:["heart"], why:"حجم پایین و چتری برای تعادل چانه باریک", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
+  {id:"he-5", fa:"فید کم با طول", en:"Low Fade Length", len:"medium", vibe:"elegant", shapes:["heart"], why:"حجم پایین، با چانه باریک هماهنگ می‌شود", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
 
-  // Oblong
-  {id:"ob-1", fa:"فرق عرض", en:"Side Width", len:"short", vibe:"classic", shapes:["oblong"], why:"عرض کناری، طول صورت را متعادل می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  // Oblong (کشیده)
+  {id:"ob-1", fa:"فرق عرض", en:"Side Part Width", len:"short", vibe:"classic", shapes:["oblong"], why:"عرض کناری، طول صورت را متعادل می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
   {id:"ob-2", fa:"چتری شلخته", en:"Messy Fringe", len:"short", vibe:"modern", shapes:["oblong"], why:"چتری، طول پیشانی را می‌شکند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
-  {id:"ob-3", fa:"کرو", en:"Crew Cut", len:"short", vibe:"classic", shapes:["oblong"], why:"کوتاهی متقارن، طول صورت را برجسته می‌کند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
-  {id:"ob-4", fa:"باب کوتاه", en:"Short Bob", len:"medium", vibe:"elegant", shapes:["oblong"], why:"خط افقی، طول صورت را کاهش می‌دهد", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"ob-3", fa:"سزار", en:"Caesar Cut", len:"short", vibe:"classic", shapes:["oblong"], why:"کوتاهی متقارن افقی، طول صورت را می‌شکند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
+  {id:"ob-4", fa:"کراپ فرانسوی", en:"French Crop", len:"short", vibe:"modern", shapes:["oblong"], why:"خط افقی چتری، طول صورت را کاهش می‌دهد", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
+  {id:"ob-5", fa:"سویپ کناری", en:"Side Sweep", len:"short", vibe:"classic", shapes:["oblong"], why:"حرکت افقی برای ایجاد عرض بصری", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
 
-  // Diamond
+  // Diamond (الماس)
   {id:"di-1", fa:"تیپر متوسط", en:"Medium Taper", len:"medium", vibe:"classic", shapes:["diamond"], why:"حجم در پیشانی و فک، تعادل با گونه‌های برجسته ایجاد می‌کند", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
   {id:"di-2", fa:"چتری پرده", en:"Curtain Bangs", len:"medium", vibe:"modern", shapes:["diamond"], why:"پوشش پیشانی و گونه‌ها را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
-  {id:"di-3", fa:"ساید سویپ", en:"Side Sweep", len:"short", vibe:"modern", shapes:["diamond"], why:"حرکت کناری، توجه را از گونه‌های برجسته منحرف می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
-  {id:"di-4", fa:"پیکسی", en:"Pixie Cut", len:"short", vibe:"edgy", shapes:["diamond"], why:"مینیمالیسم، استخوان‌بندی الماسی را برجسته می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"di-3", fa:"چتری بافت", en:"Textured Fringe", len:"short", vibe:"modern", shapes:["diamond"], why:"حرکت کناری، توجه را از گونه‌های برجسته منحرف می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  {id:"di-4", fa:"فید تیپر", en:"Taper Fade", len:"short", vibe:"edgy", shapes:["diamond"], why:"مینیمالیسم، استخوان‌بندی الماسی را برجسته می‌کند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
 
-  // Triangle
+  // Triangle (مثلثی)
   {id:"tr-1", fa:"پامپ بلند", en:"High Pomp", len:"short", vibe:"classic", shapes:["triangle"], why:"حجم بالا، با فک پهن متعادل می‌شود", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
   {id:"tr-2", fa:"کویف بلند", en:"Quiff Height", len:"short", vibe:"modern", shapes:["triangle"], why:"ارتفاع، عرض بالای صورت را افزایش می‌دهد", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
   {id:"tr-3", fa:"لایه متوسط", en:"Medium Layers", len:"medium", vibe:"elegant", shapes:["triangle"], why:"لایه‌ها، حجم را به بالای سر منتقل می‌کنند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
-  {id:"tr-4", fa:"تاپ حجم", en:"Top Volume", len:"short", vibe:"edgy", shapes:["triangle"], why:"حجم بالایی، تعادل با فک پهن ایجاد می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"tr-4", fa:"براش آپ", en:"Brush Up", len:"short", vibe:"edgy", shapes:["triangle"], why:"حجم بالایی، تعادل با فک پهن ایجاد می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
 
   // Multi-shape
   {id:"ms-1", fa:"کرو متوسط", en:"Crew Mid", len:"short", vibe:"classic", shapes:["oval","round","square"], why:"کلاسیک همه‌کاره، برای فرم‌های متعادل", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
@@ -410,7 +409,7 @@ const HAIRSTYLES = [
   {id:"ms-3", fa:"پامپ کلاسیک", en:"Classic Pomp", len:"short", vibe:"classic", shapes:["oval","square","heart"], why:"حجم متعادل، مناسب فرم‌های با پیشانی برجسته", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
 ];
 
-/* ==================== QUANTUM TARGETS (7 shapes × 4 features) ==================== */
+/* ==================== QUANTUM TARGETS ==================== */
 const QUANTUM_TARGETS = {
   oval:{geo:[1.45,1.12,1.15,1.05],curv:[0.55,0.60,0.50],sym:[0.02,0.05],ang:[0.55,0.60]},
   round:{geo:[1.10,1.00,1.05,1.25],curv:[0.85,0.70,0.65],sym:[0.03,0.03],ang:[0.70,0.75]},
