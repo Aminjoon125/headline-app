@@ -1,5 +1,5 @@
 """
-headline_app.py — نسخه‌ی کوانتومی «هد لاین» (v4.1-QUANTUM, with Images)
+headline_app.py — نسخه‌ی کوانتومی «هد لاین» (v4.2-QUANTUM, Ultimate UI)
 """
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ class Config:
     n_mc_samples: int = int(os.getenv("N_MC_SAMPLES", "20"))
     mc_noise_std: float = float(os.getenv("MC_NOISE_STD", "0.015"))
     prior_strength: float = float(os.getenv("PRIOR_STRENGTH", "0.12"))
-    engine_version: str = "quantum-v4.1"
+    engine_version: str = "quantum-v4.2"
 
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO").upper(),
@@ -336,7 +336,7 @@ def _S(_id, fa, en, desc, why, length, textures, vibe, maint, diff, pop, *shapes
     tex = textures if isinstance(textures, tuple) else (textures,)
     return HairStyle(_id, fa, en, desc, why, length, tex, vibe, maint, diff, pop, shapes, **kw)
 
-# (لیست ۲۳۴ مدل مو - همان‌طور که بود)
+# (لیست ۲۳۴ مدل مو)
 HAIRSTYLES: tuple[HairStyle, ...] = (
     _S("ov-classic-taper","تیپر کلاسیک","Classic Taper","کوتاه تمیز با تیپر نرم.","متعادل‌کننده بیضی.","short",("straight","wavy"),"classic","low",2,9,"oval",products=("wax",)),
     _S("ov-pompadour","پامپادور","Pompadour","حجم بالا و کناره‌های کوتاه.","شیکی کلاسیک.","short",("straight",),"classic","medium",4,8,"oval",products=("pomade","blow-dryer")),
@@ -655,19 +655,29 @@ INDEX_HTML = r"""<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#8b6f4e">
-<title>هد لاین v4 — مشاور کوانتومی مدل مو</title>
+<title>هد لاین — مشاور کوانتومی مدل مو</title>
 <style>
-  :root{--p:#8b6f4e;--pd:#6d5640;--pl:#a98a68;--bg:#f7f5f2;--sf:#fff;
-        --tx:#2c2c2c;--mu:#888;--bd:#e5e0d8;--er:#c0392b;--erb:#fdecea;
-        --ok:#2e7d32;--qu:#5b3fa8;--qub:#e8e3f7;--r:12px;--sh:0 4px 12px rgba(139,111,78,.12)}
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+  
+  :root{
+    --p:#8b6f4e;--pd:#6d5640;--pl:#a98a68;--bg:#f7f5f2;--sf:#fff;
+    --tx:#2c2c2c;--mu:#888;--bd:#e5e0d8;--er:#c0392b;--erb:#fdecea;
+    --ok:#2e7d32;--qu:#5b3fa8;--qub:#e8e3f7;--r:12px;--sh:0 4px 12px rgba(139,111,78,.12)
+  }
   *,*::before,*::after{box-sizing:border-box}
-  body{margin:0 auto;max-width:520px;min-height:100dvh;background:var(--bg);color:var(--tx);
-       font-family:"Vazirmatn","IRANSans",Tahoma,sans-serif;line-height:1.6;padding:20px}
-  h1{margin:0;color:var(--p);font-size:1.75rem;text-align:center}
-  .subtitle{margin:4px 0 20px;color:var(--mu);text-align:center;font-size:.9rem}
+  body{margin:0;min-height:100dvh;background-color:var(--bg);color:var(--tx);
+       font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.6;padding:20px;
+       background-image: linear-gradient(rgba(247, 245, 242, 0.92), rgba(247, 245, 242, 0.95)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop');
+       background-size: cover; background-position: center; background-attachment: fixed;}
+  .container { max-width: 520px; margin: 0 auto; position: relative; }
+  
+  .header { text-align: center; margin-bottom: 24px; }
+  h1 { margin:0; font-size:2rem; font-weight:700; color:var(--p); }
+  .h1-en { display: block; font-size: 1rem; font-weight: 400; color: var(--mu); letter-spacing: 2px; margin-top: 4px;}
   .badge{display:inline-block;background:var(--qub);color:var(--qu);font-size:.7rem;
-         padding:2px 8px;border-radius:999px;font-weight:600;margin-inline-start:6px;vertical-align:middle}
-  .instruction{padding:12px 16px;background:var(--sf);border-right:4px solid var(--pl);
+         padding:4px 10px;border-radius:999px;font-weight:600;margin-top:8px;}
+  
+  .instruction{padding:12px 16px;background:rgba(255,255,255,0.85);backdrop-filter: blur(10px);border-right:4px solid var(--pl);
                border-radius:8px;font-size:.9rem;margin-bottom:16px;box-shadow:var(--sh)}
   .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;
        border:none;border-radius:var(--r);font-family:inherit;font-size:1rem;font-weight:600;
@@ -675,62 +685,72 @@ INDEX_HTML = r"""<!DOCTYPE html>
   .btn:active:not(:disabled){transform:scale(.98)}
   .btn:disabled{background:var(--bd);color:var(--mu);cursor:not-allowed}
   .btn--primary{background:var(--p);color:#fff}.btn--primary:hover:not(:disabled){background:var(--pd)}
-  .btn--secondary{background:transparent;color:var(--p);border:1.5px solid var(--p)}
+  .btn--secondary{background:rgba(255,255,255,0.9);color:var(--p);border:1.5px solid var(--p)}
   .btn--ghost{background:transparent;color:var(--mu)}
   .actions{display:flex;flex-direction:column;gap:10px}
   .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  .preview{display:none;position:relative;border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+  
+  .preview{display:none;position:relative;border-radius:var(--r);overflow:hidden;margin-bottom:16px;box-shadow: var(--sh);}
   .preview.is-visible{display:block}
   .preview img{display:block;width:100%;max-height:320px;object-fit:cover}
   .preview__remove{position:absolute;top:8px;inset-inline-start:8px;width:36px;height:36px;padding:0;
        border:none;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:18px;cursor:pointer;
        display:grid;place-items:center}
-  .loading{display:none;text-align:center;padding:24px;background:var(--sf);border-radius:var(--r)}
+  
+  .loading{display:none;text-align:center;padding:24px;background:rgba(255,255,255,0.9);backdrop-filter: blur(10px);border-radius:var(--r)}
   .loading.is-visible{display:block}
   .spinner{width:40px;height:40px;margin:0 auto 12px;border:3px solid var(--bd);border-top-color:var(--qu);
        border-radius:50%;animation:spin .8s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
+  
   .alert{display:none;padding:12px 16px;border-radius:8px;font-size:.9rem;margin-top:12px}
   .alert.is-visible{display:block}
   .alert--error{background:var(--erb);color:var(--er);border-right:4px solid var(--er)}
+  
   .result{display:none;margin-top:16px}
   .result.is-visible{display:block}
-  .result__card{background:var(--sf);border-radius:var(--r);padding:20px;box-shadow:var(--sh)}
+  .result__card{background:rgba(255,255,255,0.95);backdrop-filter: blur(10px);border-radius:var(--r);padding:20px;box-shadow:var(--sh)}
   .result__shape{text-align:center;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--bd)}
   .result__shape-label{display:block;font-size:.85rem;color:var(--mu)}
   .result__shape-value{display:block;font-size:1.7rem;font-weight:700;color:var(--p);margin-top:4px}
-  .quantum-box{background:linear-gradient(135deg,#f4f0ff 0%,#fff 100%);border:1px solid var(--qub);
+  
+  .quantum-box{background:linear-gradient(135deg,rgba(244,240,255,0.9) 0%,rgba(255,255,255,0.9) 100%);border:1px solid var(--qub);
        border-radius:10px;padding:12px 14px;margin:12px 0}
-  .quantum-box__title{font-size:.75rem;color:var(--qu);font-weight:700;
-       margin-bottom:8px;letter-spacing:.02em}
+  .quantum-box__title{font-size:.75rem;color:var(--qu);font-weight:700; margin-bottom:8px;letter-spacing:.02em}
   .quantum-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
   .qm{display:flex;flex-direction:column;gap:2px}
   .qm__label{font-size:.7rem;color:var(--mu)}
   .qm__val{font-size:.95rem;font-weight:700;color:var(--tx);font-feature-settings:"tnum"}
   .qm__val--qu{color:var(--qu)}
+  
   .conf{display:flex;align-items:center;gap:8px;justify-content:center;margin:10px 0 14px}
   .conf__bar{flex:0 0 140px;height:6px;background:var(--bd);border-radius:3px;overflow:hidden;position:relative}
   .conf__ci{position:absolute;top:0;height:100%;background:rgba(91,63,168,.25)}
   .conf__fill{position:absolute;top:0;height:100%;background:var(--p);border-radius:3px;transition:width .5s}
   .conf__pct{font-size:.8rem;color:var(--mu)}
+  
   .contribs{margin:10px 0 4px}
   .contrib{margin-bottom:6px}
   .contrib__row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mu);margin-bottom:2px}
   .contrib__bar{height:4px;background:var(--bd);border-radius:2px;overflow:hidden}
   .contrib__fill{height:100%;background:var(--qu);border-radius:2px}
+  
   .warn-box{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:8px 12px;
        font-size:.78rem;color:#8a6d00;margin:8px 0}
+       
   .prefs{margin:16px 0}
   .prefs__row{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
   .prefs__label{font-size:.85rem;color:var(--mu);font-weight:600}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{padding:6px 12px;border:1.5px solid var(--bd);background:var(--sf);border-radius:999px;
+  .chip{padding:6px 12px;border:1.5px solid var(--bd);background:rgba(255,255,255,0.9);border-radius:999px;
         font-family:inherit;font-size:.8rem;color:var(--tx);cursor:pointer;transition:all .15s}
   .chip:hover{border-color:var(--pl)}
   .chip--active{background:var(--p);border-color:var(--p);color:#fff}
+  
   .result__title{margin:16px 0 12px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
   .result__count{font-size:.8rem;color:var(--mu);font-weight:400}
-  .style-card{display:flex;gap:12px;padding:12px;background:var(--bg);border-radius:8px;margin-bottom:10px}
+  
+  .style-card{display:flex;gap:12px;padding:12px;background:rgba(247,245,242,0.8);border-radius:8px;margin-bottom:10px}
   .style-num{width:26px;height:26px;border-radius:50%;background:var(--p);color:#fff;font-size:.85rem;
        display:grid;place-items:center;flex-shrink:0}
   .style-body{flex:1;min-width:0}
@@ -742,15 +762,23 @@ INDEX_HTML = r"""<!DOCTYPE html>
   .tag{font-size:.7rem;padding:2px 8px;background:var(--sf);border:1px solid var(--bd);border-radius:999px;color:var(--mu)}
   .tag--diff{color:#b45309;border-color:#fde68a;background:#fffbeb}
   .tag--maint{color:#166534;border-color:#bbf7d0;background:#f0fdf4}
+  .tag--img{background:#e8f0fe;color:#1a73e8;border-color:#a8c7fa;text-decoration:none;display:inline-block;cursor:pointer}
+  .tag--img:hover{background:#d2e3fc}
+  
   .empty{padding:24px;text-align:center;color:var(--mu);font-size:.9rem}
+  .footer { text-align: center; margin-top: 40px; font-size: 0.75rem; color: var(--mu); padding-bottom: 20px;}
+  .footer strong { color: var(--p); }
+  
   [hidden]{display:none!important}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-<main>
-  <h1>هد لاین <span class="badge">v4.1 کوانتومی</span></h1>
-  <p class="subtitle">مشاور مدل موی مردانه — ۲۳۴ مدل × موتور کوانتومی</p>
+<div class="container">
+  <header class="header">
+    <h1>هد لاین <span class="h1-en">HEADLINE</span></h1>
+    <span class="badge">v4.2 موتور کوانتومی</span>
+  </header>
 
   <section id="step-upload">
     <p class="instruction">عکس <strong>روبه‌رو</strong>، با نور خوب، بدون لبخند، مو عقب.</p>
@@ -819,7 +847,11 @@ INDEX_HTML = r"""<!DOCTYPE html>
     </div>
     <button id="btn-restart" class="btn btn--ghost" type="button" style="margin-top:12px">↺ شروع دوباره</button>
   </section>
-</main>
+
+  <footer class="footer">
+    توسعه‌دهنده: <strong>امین راد</strong>
+  </footer>
+</div>
 
 <script>
 (() => {
@@ -1019,11 +1051,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
       const imgLink = document.createElement("a");
       imgLink.href = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(s.name_en + " haircut");
       imgLink.target = "_blank";
-      imgLink.className = "tag";
-      imgLink.style.background = "#e8f0fe";
-      imgLink.style.color = "#1a73e8";
-      imgLink.style.borderColor = "#a8c7fa";
-      imgLink.style.textDecoration = "none";
+      imgLink.className = "tag tag--img";
       imgLink.textContent = "🔍 دیدن عکس";
       tags.appendChild(imgLink);
 
