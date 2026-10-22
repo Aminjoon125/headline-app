@@ -1,0 +1,10 @@
+Flask==3.0.3
+Werkzeug==3.1.9
+Jinja2==3.1.6
+itsdangerous==2.2.0
+click==8.5.0
+blinker==1.9.0
+mediapipe==0.10.14
+opencv-python-headless==4.10.0.84
+numpy==1.26.4
+gunicorn==22.0.0
