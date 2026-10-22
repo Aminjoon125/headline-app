@@ -1,5 +1,5 @@
 """
-headline_app.py — نسخه‌ی کوانتومی «هد لاین» (v4.0-QUANTUM, single-file, ready-to-deploy)
+headline_app.py — نسخه‌ی کوانتومی «هد لاین» (v4.1-QUANTUM, with Images)
 """
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ class Config:
     n_mc_samples: int = int(os.getenv("N_MC_SAMPLES", "20"))
     mc_noise_std: float = float(os.getenv("MC_NOISE_STD", "0.015"))
     prior_strength: float = float(os.getenv("PRIOR_STRENGTH", "0.12"))
-    engine_version: str = "quantum-v4.0"
+    engine_version: str = "quantum-v4.1"
 
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO").upper(),
@@ -336,6 +336,7 @@ def _S(_id, fa, en, desc, why, length, textures, vibe, maint, diff, pop, *shapes
     tex = textures if isinstance(textures, tuple) else (textures,)
     return HairStyle(_id, fa, en, desc, why, length, tex, vibe, maint, diff, pop, shapes, **kw)
 
+# (لیست ۲۳۴ مدل مو - همان‌طور که بود)
 HAIRSTYLES: tuple[HairStyle, ...] = (
     _S("ov-classic-taper","تیپر کلاسیک","Classic Taper","کوتاه تمیز با تیپر نرم.","متعادل‌کننده بیضی.","short",("straight","wavy"),"classic","low",2,9,"oval",products=("wax",)),
     _S("ov-pompadour","پامپادور","Pompadour","حجم بالا و کناره‌های کوتاه.","شیکی کلاسیک.","short",("straight",),"classic","medium",4,8,"oval",products=("pomade","blow-dryer")),
@@ -748,7 +749,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
 </head>
 <body>
 <main>
-  <h1>هد لاین <span class="badge">v4 کوانتومی</span></h1>
+  <h1>هد لاین <span class="badge">v4.1 کوانتومی</span></h1>
   <p class="subtitle">مشاور مدل موی مردانه — ۲۳۴ مدل × موتور کوانتومی</p>
 
   <section id="step-upload">
@@ -1013,6 +1014,19 @@ INDEX_HTML = r"""<!DOCTYPE html>
         tag.textContent = t;
         tags.appendChild(tag);
       });
+      
+      // دکمه دیدن عکس مدل
+      const imgLink = document.createElement("a");
+      imgLink.href = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(s.name_en + " haircut");
+      imgLink.target = "_blank";
+      imgLink.className = "tag";
+      imgLink.style.background = "#e8f0fe";
+      imgLink.style.color = "#1a73e8";
+      imgLink.style.borderColor = "#a8c7fa";
+      imgLink.style.textDecoration = "none";
+      imgLink.textContent = "🔍 دیدن عکس";
+      tags.appendChild(imgLink);
+
       body.appendChild(tags);
       card.append(num, body);
       fragment.appendChild(card);
