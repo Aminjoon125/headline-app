@@ -336,7 +336,6 @@ def _S(_id, fa, en, desc, why, length, textures, vibe, maint, diff, pop, *shapes
     tex = textures if isinstance(textures, tuple) else (textures,)
     return HairStyle(_id, fa, en, desc, why, length, tex, vibe, maint, diff, pop, shapes, **kw)
 
-# (لیست ۲۳۴ مدل مو)
 HAIRSTYLES: tuple[HairStyle, ...] = (
     _S("ov-classic-taper","تیپر کلاسیک","Classic Taper","کوتاه تمیز با تیپر نرم.","متعادل‌کننده بیضی.","short",("straight","wavy"),"classic","low",2,9,"oval",products=("wax",)),
     _S("ov-pompadour","پامپادور","Pompadour","حجم بالا و کناره‌های کوتاه.","شیکی کلاسیک.","short",("straight",),"classic","medium",4,8,"oval",products=("pomade","blow-dryer")),
@@ -798,7 +797,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
 
   <section id="loading" class="loading" aria-live="polite" aria-busy="true">
     <div class="spinner" aria-hidden="true"></div>
-    <p style="margin:0;color:var(--qu);font-weight:600">در حال اندازه‌گیری کوانتومی...</p>
+    <p id="loading-text" style="margin:0;color:var(--qu);font-weight:600;transition: all 0.3s;">در حال ارسال تصویر...</p>
   </section>
 
   <section id="step-result" class="result" aria-live="polite">
@@ -892,11 +891,18 @@ INDEX_HTML = r"""<!DOCTYPE html>
     cameraInput:$("camera-input"),galleryInput:$("gallery-input"),
     analyzeBtn:$("btn-analyze"),removeBtn:$("btn-remove"),
     restartBtn:$("btn-restart"),errorBox:$("error-box"),
+    loadingText:$("loading-text"),
   };
   if (!els.upload) return;
 
   let selectedFile = null, objectUrl = null, lastResult = null;
   let prefs = {length:"all",texture:"all",vibe:"all",maintenance:"all"};
+  let loadingInterval = null;
+
+  // 🌟 بیدار کردن خودکار سرور به محض باز شدن سایت
+  window.addEventListener('DOMContentLoaded', () => {
+      fetch('/health').catch(() => {});
+  });
 
   const showError = (m) => { els.errorBox.textContent = m; els.errorBox.classList.add("is-visible"); };
   const clearError = () => { els.errorBox.textContent = ""; els.errorBox.classList.remove("is-visible"); };
@@ -915,12 +921,34 @@ INDEX_HTML = r"""<!DOCTYPE html>
     clearError(); if (!f) return;
     const err = validateFile(f);
     if (err) { showError(err); resetFile(); return; }
-    selectedFile = f;
-    if (objectUrl) URL.revokeObjectURL(objectUrl);
-    objectUrl = URL.createObjectURL(f);
-    els.previewImg.src = objectUrl;
-    els.preview.classList.add("is-visible");
-    els.analyzeBtn.disabled = false;
+    
+    // فشرده سازی عکس در سمت کاربر
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+        const maxSide = 800;
+        if (width > maxSide) { height *= maxSide / width; width = maxSide; }
+        if (height > maxSide) { width *= maxSide / height; height = maxSide; }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob((blob) => {
+          selectedFile = new File([blob], "compressed.jpg", { type: "image/jpeg" });
+          if (objectUrl) URL.revokeObjectURL(objectUrl);
+          objectUrl = URL.createObjectURL(selectedFile);
+          els.previewImg.src = objectUrl;
+          els.preview.classList.add("is-visible");
+          els.analyzeBtn.disabled = false;
+        }, "image/jpeg", 0.7);
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(f);
   }
   function resetFile() {
     selectedFile = null; lastResult = null;
@@ -1047,7 +1075,6 @@ INDEX_HTML = r"""<!DOCTYPE html>
         tags.appendChild(tag);
       });
       
-      // دکمه دیدن عکس مدل
       const imgLink = document.createElement("a");
       imgLink.href = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(s.name_en + " haircut");
       imgLink.target = "_blank";
@@ -1064,15 +1091,33 @@ INDEX_HTML = r"""<!DOCTYPE html>
   function renderResult(data) {
     lastResult = data; renderHeader(data); renderStyles(); setState("result");
   }
+  
   async function handleAnalyze() {
     if (!selectedFile) return;
     clearError(); els.analyzeBtn.disabled = true; setState("loading");
-    try { renderResult(await requestAnalysis(selectedFile)); }
+    
+    // 🌟 متن لودینگ متحرک
+    let sec = 0;
+    els.loadingText.textContent = "در حال بیدار کردن سرور کوانتومی...";
+    loadingInterval = setInterval(() => {
+      sec += 3;
+      if(sec === 3) els.loadingText.textContent = "در حال اتصال به سرور (لطفا صبر کنید)...";
+      if(sec === 9) els.loadingText.textContent = "سرور در حال آماده‌سازی موتور پردازش است...";
+      if(sec === 18) els.loadingText.textContent = "در حال آنالیز چهره شما...";
+      if(sec === 30) els.loadingText.textContent = "لطفاً چند لحظه دیگر صبر کنید...";
+      if(sec === 45) els.loadingText.textContent = "پردازش سنگین است، صبور باشید...";
+    }, 3000);
+
+    try { 
+        renderResult(await requestAnalysis(selectedFile)); 
+    }
     catch (err) {
       setState("upload"); els.analyzeBtn.disabled = !selectedFile;
-      if (err.name === "AbortError") showError("زمان درخواست تمام شد.");
+      if (err.name === "AbortError") showError("زمان درخواست تمام شد. لطفا دوباره تلاش کنید.");
       else if (err.message === "Failed to fetch") showError("اتصال برقرار نشد.");
       else showError(err.message || "خطای نامشخص.");
+    } finally {
+      clearInterval(loadingInterval);
     }
   }
   els.prefs.querySelectorAll(".chips").forEach(chipsEl => {
