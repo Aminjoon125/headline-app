@@ -28,14 +28,15 @@
   body{
     margin:0;min-height:100dvh;background-color:var(--bg);color:var(--tx);
     font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.65;padding:16px 16px 32px;
-    background-image:linear-gradient(rgba(247,245,242,.92),rgba(247,245,242,.95)),
-      url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop');
+    /* پس زمینه با کدری کمتر تا عکس دیده شود */
+    background-image:linear-gradient(rgba(247,245,242,.65),rgba(247,245,242,.8)),
+      url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop');
     background-size:cover;background-position:center;background-attachment:fixed;
     transition:background-color .3s,color .3s;
   }
   [data-theme="dark"] body{
-    background-image:linear-gradient(rgba(18,18,18,.94),rgba(18,18,18,.97)),
-      url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop');
+    background-image:linear-gradient(rgba(18,18,18,.75),rgba(18,18,18,.85)),
+      url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop');
   }
   .container{max-width:580px;margin:0 auto;position:relative}
 
@@ -194,16 +195,18 @@
   .result__title{margin:16px 0 12px;font-weight:700;display:flex;justify-content:space-between;
      align-items:center;font-size:.95rem}
   .result__count{font-size:.8rem;color:var(--mu);font-weight:400}
-  .style-card{display:flex;gap:12px;padding:14px;background:var(--bg);border-radius:10px;
+  
+  .style-card{display:flex;gap:12px;padding:12px;background:var(--bg);border-radius:10px;
      margin-bottom:10px;border:1px solid transparent;transition:all .2s;
-     animation:slideIn .35s ease-out both}
+     animation:slideIn .35s ease-out both;align-items:center}
   .style-card:hover{border-color:var(--pl);box-shadow:var(--sh);transform:translateY(-1px)}
-  .style-num{width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;
-     font-size:.85rem;font-weight:700;display:grid;place-items:center;flex-shrink:0}
+  
+  /* عکس مدل مو */
+  .style-img{width:70px;height:70px;border-radius:8px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+  
   .style-body{flex:1;min-width:0}
   .style-title{font-size:.95rem;font-weight:700}
   .style-title-en{font-size:.75rem;color:var(--mu);font-weight:400;margin-inline-start:4px}
-  .style-desc{font-size:.82rem;color:var(--mu);margin:4px 0 0}
   .style-why{font-size:.78rem;color:var(--qu);margin:4px 0 0;font-weight:500}
   .style-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
   .tag{font-size:.7rem;padding:2px 8px;background:var(--sf);border:1px solid var(--bd);
@@ -235,6 +238,7 @@
     h1{font-size:2rem}
     .result-actions{grid-template-columns:1fr}
     .quantum-metrics{grid-template-columns:1fr}
+    .style-img{width:60px;height:60px}
   }
 </style>
 </head>
@@ -348,59 +352,62 @@ const SHAPE_EN = {oval:"Oval",round:"Round",square:"Square",heart:"Heart",oblong
 const LEN_FA = {short:"کوتاه",medium:"متوسط",long:"بلند"};
 const VIBE_FA = {classic:"کلاسیک",modern:"مدرن",edgy:"جسورانه",elegant:"شیک"};
 
+// تصاویر پیش‌فرض برای هر مدل (برای جلوگیری از خرابی ظاهر)
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop";
+
 /* ==================== HAIRSTYLE DATABASE (36+ styles) ==================== */
 const HAIRSTYLES = [
   // Oval
-  {id:"ov-1", fa:"تیپر کلاسیک", en:"Classic Taper", len:"short", vibe:"classic", shapes:["oval"], why:"تعادل طبیعی خط فک بیضی را برجسته می‌کند"},
-  {id:"ov-2", fa:"پامپادور", en:"Pompadour", len:"short", vibe:"classic", shapes:["oval"], why:"حجم بالایی ایجاد می‌کند که نسبت طلایی صورت را تقویت می‌کند"},
-  {id:"ov-3", fa:"کویف مدرن", en:"Modern Quiff", len:"short", vibe:"modern", shapes:["oval"], why:"حرکت عمودی، طول صورت بیضی را متعادل می‌کند"},
-  {id:"ov-4", fa:"فرق کناری", en:"Side Part", len:"short", vibe:"classic", shapes:["oval"], why:"خط فرق، تقارن طبیعی صورت را برجسته می‌کند"},
-  {id:"ov-5", fa:"فلو متوسط", en:"Mid-Length Flow", len:"medium", vibe:"elegant", shapes:["oval"], why:"جریان طبیعی مو، نرمی فرم بیضی را تکمیل می‌کند"},
-  {id:"ov-6", fa:"باز فید", en:"Buzz Fade", len:"short", vibe:"edgy", shapes:["oval"], why:"مینیمالیسم جسورانه، فرم متعادل بیضی را نمایش می‌دهد"},
+  {id:"ov-1", fa:"تیپر کلاسیک", en:"Classic Taper", len:"short", vibe:"classic", shapes:["oval"], why:"تعادل طبیعی خط فک بیضی را برجسته می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"ov-2", fa:"پامپادور", en:"Pompadour", len:"short", vibe:"classic", shapes:["oval"], why:"حجم بالایی ایجاد می‌کند که نسبت طلایی صورت را تقویت می‌کند", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
+  {id:"ov-3", fa:"کویف مدرن", en:"Modern Quiff", len:"short", vibe:"modern", shapes:["oval"], why:"حرکت عمودی، طول صورت بیضی را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"ov-4", fa:"فرق کناری", en:"Side Part", len:"short", vibe:"classic", shapes:["oval"], why:"خط فرق، تقارن طبیعی صورت را برجسته می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  {id:"ov-5", fa:"فلو متوسط", en:"Mid-Length Flow", len:"medium", vibe:"elegant", shapes:["oval"], why:"جریان طبیعی مو، نرمی فرم بیضی را تکمیل می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"ov-6", fa:"باز فید", en:"Buzz Fade", len:"short", vibe:"edgy", shapes:["oval"], why:"مینیمالیسم جسورانه، فرم متعادل بیضی را نمایش می‌دهد", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
 
   // Round
-  {id:"rd-1", fa:"فید بلند", en:"High Fade", len:"short", vibe:"modern", shapes:["round"], why:"کناره‌های کوتاه، عرض صورت را کاهش می‌دهد"},
-  {id:"rd-2", fa:"پامپ فید", en:"Pomp Fade", len:"short", vibe:"classic", shapes:["round"], why:"ارتفاع بالای سر، فرم گرد را کشیده‌تر نشان می‌دهد"},
-  {id:"rd-3", fa:"کویف حجم", en:"Voluminous Quiff", len:"short", vibe:"modern", shapes:["round"], why:"حجم عمودی، توهم طول در صورت گرد ایجاد می‌کند"},
-  {id:"rd-4", fa:"تاپ بافت", en:"Textured Top", len:"short", vibe:"edgy", shapes:["round"], why:"بافت نامتقارن، گردی صورت را می‌شکند"},
-  {id:"rd-5", fa:"لایه‌های بلند", en:"Long Layers", len:"long", vibe:"elegant", shapes:["round"], why:"لایه‌های عمودی، خطوط صورت را کشیده نشان می‌دهند"},
+  {id:"rd-1", fa:"فید بلند", en:"High Fade", len:"short", vibe:"modern", shapes:["round"], why:"کناره‌های کوتاه، عرض صورت را کاهش می‌دهد", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
+  {id:"rd-2", fa:"پامپ فید", en:"Pomp Fade", len:"short", vibe:"classic", shapes:["round"], why:"ارتفاع بالای سر، فرم گرد را کشیده‌تر نشان می‌دهد", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
+  {id:"rd-3", fa:"کویف حجم", en:"Voluminous Quiff", len:"short", vibe:"modern", shapes:["round"], why:"حجم عمودی، توهم طول در صورت گرد ایجاد می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"rd-4", fa:"تاپ بافت", en:"Textured Top", len:"short", vibe:"edgy", shapes:["round"], why:"بافت نامتقارن، گردی صورت را می‌شکند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"rd-5", fa:"لایه‌های بلند", en:"Long Layers", len:"long", vibe:"elegant", shapes:["round"], why:"لایه‌های عمودی، خطوط صورت را کشیده نشان می‌دهند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
 
   // Square
-  {id:"sq-1", fa:"فرق نرم", en:"Soft Side Part", len:"short", vibe:"classic", shapes:["square"], why:"نرمی خطوط، گوشه‌های فک مربعی را تلطیف می‌کند"},
-  {id:"sq-2", fa:"کویف بافت", en:"Textured Quiff", len:"short", vibe:"modern", shapes:["square"], why:"بافت بالا، تعادل با فک قوی ایجاد می‌کند"},
-  {id:"sq-3", fa:"فید پایین", en:"Low Fade", len:"short", vibe:"modern", shapes:["square"], why:"انتقال تدریجی، خط فک قوی را نرم می‌کند"},
-  {id:"sq-4", fa:"کرو کات", en:"Crew Cut", len:"short", vibe:"classic", shapes:["square"], why:"مینیمال و متقارن، قدرت فک را برجسته می‌کند"},
-  {id:"sq-5", fa:"من بان", en:"Man Bun", len:"long", vibe:"edgy", shapes:["square"], why:"جمع‌کردن مو، خط فک را آزاد و برجسته می‌کند"},
+  {id:"sq-1", fa:"فرق نرم", en:"Soft Side Part", len:"short", vibe:"classic", shapes:["square"], why:"نرمی خطوط، گوشه‌های فک مربعی را تلطیف می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  {id:"sq-2", fa:"کویف بافت", en:"Textured Quiff", len:"short", vibe:"modern", shapes:["square"], why:"بافت بالا، تعادل با فک قوی ایجاد می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"sq-3", fa:"فید پایین", en:"Low Fade", len:"short", vibe:"modern", shapes:["square"], why:"انتقال تدریجی، خط فک قوی را نرم می‌کند", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
+  {id:"sq-4", fa:"کرو کات", en:"Crew Cut", len:"short", vibe:"classic", shapes:["square"], why:"مینیمال و متقارن، قدرت فک را برجسته می‌کند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
+  {id:"sq-5", fa:"من بان", en:"Man Bun", len:"long", vibe:"edgy", shapes:["square"], why:"جمع‌کردن مو، خط فک را آزاد و برجسته می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
 
   // Heart
-  {id:"he-1", fa:"فرق متوسط", en:"Medium Side Part", len:"medium", vibe:"classic", shapes:["heart"], why:"حجم کناری، تعادل با پیشانی پهن ایجاد می‌کند"},
-  {id:"he-2", fa:"پرده‌ای", en:"Curtain", len:"medium", vibe:"modern", shapes:["heart"], why:"پوشش کناری پیشانی، عرض آن را متعادل می‌کند"},
-  {id:"he-3", fa:"چتری", en:"Fringe", len:"short", vibe:"modern", shapes:["heart"], why:"چتری، پیشانی پهن را می‌پوشاند"},
-  {id:"he-4", fa:"باب", en:"Bob", len:"medium", vibe:"elegant", shapes:["heart"], why:"خطوط افقی، چانه باریک را متعادل می‌کند"},
-  {id:"he-5", fa:"لایه‌های بلند", en:"Long Layers", len:"long", vibe:"elegant", shapes:["heart"], why:"حجم پایین، با چانه باریک هماهنگ می‌شود"},
+  {id:"he-1", fa:"فرق متوسط", en:"Medium Side Part", len:"medium", vibe:"classic", shapes:["heart"], why:"حجم کناری، تعادل با پیشانی پهن ایجاد می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  {id:"he-2", fa:"پرده‌ای", en:"Curtain", len:"medium", vibe:"modern", shapes:["heart"], why:"پوشش کناری پیشانی، عرض آن را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"he-3", fa:"چتری", en:"Fringe", len:"short", vibe:"modern", shapes:["heart"], why:"چتری، پیشانی پهن را می‌پوشاند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"he-4", fa:"باب", en:"Bob", len:"medium", vibe:"elegant", shapes:["heart"], why:"خطوط افقی، چانه باریک را متعادل می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"he-5", fa:"لایه‌های بلند", en:"Long Layers", len:"long", vibe:"elegant", shapes:["heart"], why:"حجم پایین، با چانه باریک هماهنگ می‌شود", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
 
   // Oblong
-  {id:"ob-1", fa:"فرق عرض", en:"Side Width", len:"short", vibe:"classic", shapes:["oblong"], why:"عرض کناری، طول صورت را متعادل می‌کند"},
-  {id:"ob-2", fa:"چتری شلخته", en:"Messy Fringe", len:"short", vibe:"modern", shapes:["oblong"], why:"چتری، طول پیشانی را می‌شکند"},
-  {id:"ob-3", fa:"کرو", en:"Crew Cut", len:"short", vibe:"classic", shapes:["oblong"], why:"کوتاهی متقارن، طول صورت را برجسته می‌کند"},
-  {id:"ob-4", fa:"باب کوتاه", en:"Short Bob", len:"medium", vibe:"elegant", shapes:["oblong"], why:"خط افقی، طول صورت را کاهش می‌دهد"},
+  {id:"ob-1", fa:"فرق عرض", en:"Side Width", len:"short", vibe:"classic", shapes:["oblong"], why:"عرض کناری، طول صورت را متعادل می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  {id:"ob-2", fa:"چتری شلخته", en:"Messy Fringe", len:"short", vibe:"modern", shapes:["oblong"], why:"چتری، طول پیشانی را می‌شکند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
+  {id:"ob-3", fa:"کرو", en:"Crew Cut", len:"short", vibe:"classic", shapes:["oblong"], why:"کوتاهی متقارن، طول صورت را برجسته می‌کند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
+  {id:"ob-4", fa:"باب کوتاه", en:"Short Bob", len:"medium", vibe:"elegant", shapes:["oblong"], why:"خط افقی، طول صورت را کاهش می‌دهد", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
 
   // Diamond
-  {id:"di-1", fa:"تیپر متوسط", en:"Medium Taper", len:"medium", vibe:"classic", shapes:["diamond"], why:"حجم در پیشانی و فک، تعادل با گونه‌های برجسته ایجاد می‌کند"},
-  {id:"di-2", fa:"چتری پرده", en:"Curtain Bangs", len:"medium", vibe:"modern", shapes:["diamond"], why:"پوشش پیشانی و گونه‌ها را متعادل می‌کند"},
-  {id:"di-3", fa:"ساید سویپ", en:"Side Sweep", len:"short", vibe:"modern", shapes:["diamond"], why:"حرکت کناری، توجه را از گونه‌های برجسته منحرف می‌کند"},
-  {id:"di-4", fa:"پیکسی", en:"Pixie Cut", len:"short", vibe:"edgy", shapes:["diamond"], why:"مینیمالیسم، استخوان‌بندی الماسی را برجسته می‌کند"},
+  {id:"di-1", fa:"تیپر متوسط", en:"Medium Taper", len:"medium", vibe:"classic", shapes:["diamond"], why:"حجم در پیشانی و فک، تعادل با گونه‌های برجسته ایجاد می‌کند", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
+  {id:"di-2", fa:"چتری پرده", en:"Curtain Bangs", len:"medium", vibe:"modern", shapes:["diamond"], why:"پوشش پیشانی و گونه‌ها را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"di-3", fa:"ساید سویپ", en:"Side Sweep", len:"short", vibe:"modern", shapes:["diamond"], why:"حرکت کناری، توجه را از گونه‌های برجسته منحرف می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
+  {id:"di-4", fa:"پیکسی", en:"Pixie Cut", len:"short", vibe:"edgy", shapes:["diamond"], why:"مینیمالیسم، استخوان‌بندی الماسی را برجسته می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
 
   // Triangle
-  {id:"tr-1", fa:"پامپ بلند", en:"High Pomp", len:"short", vibe:"classic", shapes:["triangle"], why:"حجم بالا، با فک پهن متعادل می‌شود"},
-  {id:"tr-2", fa:"کویف بلند", en:"Quiff Height", len:"short", vibe:"modern", shapes:["triangle"], why:"ارتفاع، عرض بالای صورت را افزایش می‌دهد"},
-  {id:"tr-3", fa:"لایه متوسط", en:"Medium Layers", len:"medium", vibe:"elegant", shapes:["triangle"], why:"لایه‌ها، حجم را به بالای سر منتقل می‌کنند"},
-  {id:"tr-4", fa:"تاپ حجم", en:"Top Volume", len:"short", vibe:"edgy", shapes:["triangle"], why:"حجم بالایی، تعادل با فک پهن ایجاد می‌کند"},
+  {id:"tr-1", fa:"پامپ بلند", en:"High Pomp", len:"short", vibe:"classic", shapes:["triangle"], why:"حجم بالا، با فک پهن متعادل می‌شود", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
+  {id:"tr-2", fa:"کویف بلند", en:"Quiff Height", len:"short", vibe:"modern", shapes:["triangle"], why:"ارتفاع، عرض بالای صورت را افزایش می‌دهد", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
+  {id:"tr-3", fa:"لایه متوسط", en:"Medium Layers", len:"medium", vibe:"elegant", shapes:["triangle"], why:"لایه‌ها، حجم را به بالای سر منتقل می‌کنند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"tr-4", fa:"تاپ حجم", en:"Top Volume", len:"short", vibe:"edgy", shapes:["triangle"], why:"حجم بالایی، تعادل با فک پهن ایجاد می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
 
   // Multi-shape
-  {id:"ms-1", fa:"کرو متوسط", en:"Crew Mid", len:"short", vibe:"classic", shapes:["oval","round","square"], why:"کلاسیک همه‌کاره، برای فرم‌های متعادل"},
-  {id:"ms-2", fa:"اسکین فید", en:"Skin Fade", len:"short", vibe:"edgy", shapes:["oval","round","square"], why:"فید تیز، ساختار صورت را برجسته می‌کند"},
-  {id:"ms-3", fa:"پامپ کلاسیک", en:"Classic Pomp", len:"short", vibe:"classic", shapes:["oval","square","heart"], why:"حجم متعادل، مناسب فرم‌های با پیشانی برجسته"},
+  {id:"ms-1", fa:"کرو متوسط", en:"Crew Mid", len:"short", vibe:"classic", shapes:["oval","round","square"], why:"کلاسیک همه‌کاره، برای فرم‌های متعادل", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
+  {id:"ms-2", fa:"اسکین فید", en:"Skin Fade", len:"short", vibe:"edgy", shapes:["oval","round","square"], why:"فید تیز، ساختار صورت را برجسته می‌کند", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
+  {id:"ms-3", fa:"پامپ کلاسیک", en:"Classic Pomp", len:"short", vibe:"classic", shapes:["oval","square","heart"], why:"حجم متعادل، مناسب فرم‌های با پیشانی برجسته", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
 ];
 
 /* ==================== QUANTUM TARGETS (7 shapes × 4 features) ==================== */
@@ -419,7 +426,6 @@ const OBSERVER_PHASES = {geo:0.0,curv:Math.PI/3,sym:2*Math.PI/3,ang:Math.PI};
 const SHAPES = ["oval","round","square","heart","oblong","diamond","triangle"];
 const SHAPE_PRIOR = [0.22,0.18,0.16,0.12,0.10,0.12,0.10];
 
-/* Entanglement correlations between feature pairs (quantum non-locality) */
 const ENTANGLE = {
   'curv|geo':0.35, 'geo|sym':0.15, 'ang|geo':0.25,
   'curv|sym':0.12, 'ang|curv':0.18, 'ang|sym':0.10
@@ -444,7 +450,6 @@ function toast(msg, ms=2200) {
   toastTimer = setTimeout(() => els.toast.classList.remove("is-visible"), ms);
 }
 
-/* ==================== THEME ==================== */
 const savedTheme = localStorage.getItem("headline_theme");
 if (savedTheme === "dark") {
   document.documentElement.setAttribute("data-theme","dark");
@@ -459,8 +464,6 @@ els.themeToggle.addEventListener("click", () => {
   localStorage.setItem("headline_theme", next);
 });
 
-/* ==================== MODEL ==================== */
-// لینک رسمی مدل. اگر در ایران با خطای 403 مواجه شدید، یک بار با VPN باز کنید یا لینک را با هاست خود جایگزین کنید.
 const MODEL_URL = "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task";
 const WASM_URL = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm";
 
@@ -498,7 +501,6 @@ async function initFaceLandmarker() {
   els.loadingText.textContent = "آماده است!";
 }
 
-/* ==================== QUANTUM ENGINE v2 ==================== */
 function analyzeQuantum(landmarks) {
   const I = {FOREHEAD_TOP:10,CHIN_BOTTOM:152,FOREHEAD_LEFT:54,FOREHEAD_RIGHT:284,
     ZYGOMATIC_LEFT:234,ZYGOMATIC_RIGHT:454,JAW_LEFT:58,JAW_RIGHT:288,
@@ -636,7 +638,6 @@ function analyzeQuantum(landmarks) {
   };
 }
 
-/* ==================== FACE MESH VISUALIZATION ==================== */
 function drawFaceMesh(canvas, imgEl, landmarks) {
   const w = canvas.clientWidth || imgEl.clientWidth;
   const h = canvas.clientHeight || imgEl.clientHeight;
@@ -687,7 +688,6 @@ function drawFaceMesh(canvas, imgEl, landmarks) {
   }
 }
 
-/* ==================== FILE HANDLING ==================== */
 async function setFile(f) {
   if (!f) return;
   els.errorBox.classList.remove("is-visible", "alert--warn");
@@ -717,7 +717,6 @@ async function setFile(f) {
   reader.readAsDataURL(f);
 }
 
-/* ==================== ANALYSIS PIPELINE ==================== */
 async function runAnalysis(imgElement) {
   if (!imgElement) return;
   els.upload.style.display = "none";
@@ -784,7 +783,6 @@ async function runAnalysis(imgElement) {
   }
 }
 
-/* ==================== RESULTS RENDERING ==================== */
 function renderResults() {
   const { analysis, styles } = lastResult;
   const shapeFa = SHAPE_FA[analysis.shape];
@@ -865,7 +863,7 @@ function renderStyles(styles) {
 
   els.stylesList.innerHTML = filtered.map((s, i) => `
     <div class="style-card" style="animation-delay:${i * 40}ms">
-      <span class="style-num">${i + 1}</span>
+      <img src="${s.img || FALLBACK_IMG}" alt="${s.fa}" class="style-img" onerror="this.src='${FALLBACK_IMG}'">
       <div class="style-body">
         <strong class="style-title">${s.fa}<span class="style-title-en">${s.en}</span></strong>
         <p class="style-why">⚛ ${s.why}</p>
@@ -894,7 +892,6 @@ function renderStyles(styles) {
   });
 }
 
-/* ==================== EVENTS ==================== */
 els.galleryInput.addEventListener("change", e => setFile(e.target.files?.[0]));
 
 els.removeBtn.addEventListener("click", () => {
@@ -960,7 +957,6 @@ els.prefs.querySelectorAll(".chips").forEach(chipsEl => {
   });
 });
 
-/* Pre-warm model in background (non-blocking) */
 ensureModel().catch(err => console.warn("Model preload failed:", err));
 </script>
 </body>
