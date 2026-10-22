@@ -1,365 +1,521 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" data-theme="dark">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#060608">
+<meta name="theme-color" content="#f8f6f2">
 <title>هد لاین Pro — مشاور فوق‌کوانتومی مدل مو</title>
 <style>
-  /* اضافه شدن فونت نستعلیق برای تیتر */
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Vazirmatn:wght@400;500;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 
   :root{
-    --p:#8b6f4e;--pd:#6d5640;--pl:#a98a68;--bg:#f5f2ee;--sf:#fff;
-    --tx:#2c2c2c;--mu:#888;--bd:#e5e0d8;--er:#c0392b;--erb:#fdecea;
-    --qu:#5b3fa8;--qub:#e8e3f7;--qug:#7c5fd3;
-    --ok:#16a34a;--okb:#dcfce7;--warn:#d97706;--warnb:#fef3c7;
-    --r:14px;--r2:8px;--sh:0 4px 20px rgba(139,111,78,.10);
-    --grad:linear-gradient(135deg,#8b6f4e 0%,#a98a68 100%);
-    --gradq:linear-gradient(135deg,#5b3fa8 0%,#7c5fd3 50%,#a78bfa 100%);
-    --gradq2:linear-gradient(90deg,#5b3fa8,#7c5fd3,#a78bfa,#7c5fd3,#5b3fa8);
-    --grid-line:rgba(139,111,78,.06);
-    --glow-gold:rgba(139,111,78,.15);
-    --glow-purple:rgba(124,95,211,.10);
-    --stroke:rgba(139,111,78,.10);
-    --bracket:rgba(139,111,78,.45);
-    --bracket2:rgba(124,95,211,.45);
+    --gold:#b8935a; --gold-d:#9a7947; --gold-l:#d4b47a; --gold-x:#e8c87a;
+    --gold-glow:rgba(184,147,90,.22); --gold-glow-d:rgba(212,175,55,.32);
+    --qu:#5b21b6; --qu-d:#4c1d95; --qu-l:#7c3aed; --qu-x:#a78bfa;
+    --qu-glow:rgba(91,33,182,.25);
+    --bg:#f8f6f2; --bg-2:#f3efe8; --sf:#ffffff; --sf-2:#faf8f4;
+    --tx:#0f0f10; --tx-2:#2d2d33; --mu:#76737a; --mu-2:#a8a49e;
+    --bd:#e8e2d6; --bd-2:#f0ebe0;
+    --er:#c0392b; --erb:#fdecea;
+    --ok:#16a34a; --okb:#dcfce7;
+    --warn:#d97706; --warnb:#fef3c7;
+    --r:18px; --r-2:12px; --r-3:8px; --r-pill:999px;
+    --sh-xs:0 1px 2px rgba(20,15,5,.04);
+    --sh-sm:0 2px 8px rgba(20,15,5,.06), 0 1px 2px rgba(20,15,5,.04);
+    --sh:0 4px 24px rgba(20,15,5,.08), 0 2px 6px rgba(20,15,5,.04);
+    --sh-lg:0 12px 48px rgba(20,15,5,.10), 0 4px 12px rgba(20,15,5,.05);
+    --sh-gold:0 6px 24px rgba(184,147,90,.28), 0 2px 6px rgba(184,147,90,.16);
+    --sh-qu:0 6px 28px rgba(91,33,182,.28), 0 2px 8px rgba(91,33,182,.18);
+    --grad-gold:linear-gradient(135deg,#c9a568 0%,#b8935a 35%,#a17d4a 100%);
+    --grad-gold-h:linear-gradient(135deg,#d4b47a 0%,#c9a568 35%,#b8935a 100%);
+    --grad-qu:linear-gradient(135deg,#5b21b6 0%,#7c3aed 50%,#a78bfa 100%);
+    --grad-qu-flow:linear-gradient(90deg,#5b21b6,#7c3aed,#a78bfa,#7c3aed,#5b21b6);
+    --grad-divider:linear-gradient(90deg,transparent,var(--gold),var(--qu),var(--gold),transparent);
+    --grid-line:rgba(184,147,90,.055);
+    --stroke:rgba(184,147,90,.10);
+    --bracket:rgba(184,147,90,.42);
+    --bracket2:rgba(124,58,237,.42);
+    --hairline:rgba(184,147,90,.15);
   }
   [data-theme="dark"]{
-    --bg:#060608;--sf:#111114;--tx:#f0f0f0;--mu:#999aa3;--bd:#25252c;
-    --erb:#2a0f0c;--qub:#1f1832;--okb:#0c2114;--warnb:#2a1e08;
-    --sh:0 4px 24px rgba(0,0,0,.55);
-    --grid-line:rgba(139,111,78,.045);
-    --glow-gold:rgba(139,111,78,.20);
-    --glow-purple:rgba(124,95,211,.18);
-    --stroke:rgba(139,111,78,.18);
-    --bracket:rgba(139,111,78,.55);
-    --bracket2:rgba(124,95,211,.55);
+    --bg:#06060a; --bg-2:#0a0a10; --sf:#101018; --sf-2:#141420;
+    --tx:#f5f5f7; --tx-2:#d8d8de; --mu:#8a8a94; --mu-2:#5e5e68;
+    --bd:#1f1f2a; --bd-2:#2a2a38;
+    --erb:#2a0f0c; --okb:#0c2114; --warnb:#2a1e08;
+    --sh-xs:0 1px 2px rgba(0,0,0,.4);
+    --sh-sm:0 2px 8px rgba(0,0,0,.5);
+    --sh:0 4px 24px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.4);
+    --sh-lg:0 12px 48px rgba(0,0,0,.65), 0 4px 12px rgba(0,0,0,.5);
+    --sh-gold:0 6px 24px rgba(212,175,55,.32), 0 2px 6px rgba(212,175,55,.20);
+    --sh-qu:0 6px 28px rgba(124,58,237,.40), 0 2px 8px rgba(124,58,237,.24);
+    --gold:#d4af37; --gold-d:#b8935a; --gold-l:#e8c87a; --gold-x:#f2d896;
+    --gold-glow:rgba(212,175,55,.28); --gold-glow-d:rgba(232,200,122,.38);
+    --qu:#7c3aed; --qu-d:#5b21b6; --qu-l:#a78bfa; --qu-x:#c4b5fd;
+    --qu-glow:rgba(124,58,237,.28);
+    --grid-line:rgba(212,175,55,.045);
+    --stroke:rgba(212,175,55,.18);
+    --bracket:rgba(212,175,55,.58);
+    --bracket2:rgba(167,139,250,.58);
+    --hairline:rgba(212,175,55,.20);
   }
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
 
-  /* ═══════════ ✦ پس‌زمینه مهندسی لوکس ✦ ═══════════ */
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
   body{
     margin:0;min-height:100dvh;background-color:var(--bg);color:var(--tx);
-    font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.65;padding:16px 16px 32px;
+    font-family:"Vazirmatn","Segoe UI",Tahoma,sans-serif;
+    line-height:1.7;padding:20px 16px 40px;
     background-image:
-      linear-gradient(rgba(6,6,8,0.85), rgba(6,6,8,0.95)),
-      radial-gradient(circle at 15% 15%, rgba(139,111,78,0.15) 0%, transparent 40%),
-      radial-gradient(circle at 85% 85%, rgba(124,95,211,0.15) 0%, transparent 40%),
+      linear-gradient(rgba(248,246,242,0.94), rgba(243,239,232,0.97)),
+      radial-gradient(circle at 12% 8%, var(--gold-glow) 0%, transparent 45%),
+      radial-gradient(circle at 88% 92%, var(--qu-glow) 0%, transparent 45%),
       url('https://images.unsplash.com/photo-1593702288056-7927b442d0fa?q=80&w=2070&auto=format&fit=crop');
     background-size:cover;background-position:center;background-attachment:fixed;
-    transition:background-color .4s,color .4s;
+    transition:background-color .5s ease,color .4s ease;
     position:relative;overflow-x:hidden;
     -webkit-tap-highlight-color:transparent;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
   }
-  [data-theme="light"] body{
+  [data-theme="dark"] body{
     background-image:
-      linear-gradient(rgba(245,242,238,0.90), rgba(245,242,238,0.95)),
-      radial-gradient(circle at 15% 15%, rgba(139,111,78,0.10) 0%, transparent 40%),
+      linear-gradient(rgba(6,6,10,0.92), rgba(4,4,8,0.97)),
+      radial-gradient(circle at 12% 8%, rgba(212,175,55,0.10) 0%, transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(124,58,237,0.12) 0%, transparent 45%),
       url('https://images.unsplash.com/photo-1593702288056-7927b442d0fa?q=80&w=2070&auto=format&fit=crop');
   }
-  
-  /* خطوط شبکه‌ای مهندسی روی پس‌زمینه */
-  body::after {
+
+  body::after{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     background-image:
       linear-gradient(var(--grid-line) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size:40px 40px;
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
   }
 
-  /* ─── واترمارک OUTLINE لوکس HEADLINE ─── */
   body::before{
-    content:"HEADLINE";
-    position:fixed;top:50%;left:50%;
-    transform:translate(-50%,-50%) rotate(-12deg);
-    font-size:17vw;font-weight:900;line-height:1;
-    color:transparent;
-    -webkit-text-stroke:1.5px var(--stroke);
-    letter-spacing:1.4vw;
+    content:"HEADLINE";position:fixed;top:50%;left:50%;
+    transform:translate(-50%,-50%) rotate(-11deg);
+    font-size:17vw;font-weight:900;line-height:1;color:transparent;
+    -webkit-text-stroke:1.2px var(--stroke);letter-spacing:1.5vw;
     z-index:0;pointer-events:none;white-space:nowrap;
-    font-family:'Arial Black','Segoe UI Black',Arial,sans-serif;
-    user-select:none;
-    text-shadow:0 0 100px rgba(139,111,78,.10);
+    font-family:'Arial Black','Segoe UI Black',Arial,sans-serif;user-select:none;
+    text-shadow:0 0 120px rgba(184,147,90,.06);
   }
   [data-theme="dark"] body::before{
-    -webkit-text-stroke:1.5px rgba(139,111,78,.16);
-    text-shadow:0 0 120px rgba(124,95,211,.15), 0 0 60px rgba(139,111,78,.12);
+    -webkit-text-stroke:1.2px rgba(212,175,55,.14);
+    text-shadow:0 0 140px rgba(124,58,237,.12), 0 0 70px rgba(212,175,55,.10);
   }
 
-  /* ─── کانتینر با براکت‌های مهندسی ─── */
-  .container{max-width:580px;margin:0 auto;position:relative;z-index:1}
-  .container::before,
-  .container::after{
-    content:"";position:absolute;width:36px;height:36px;
-    pointer-events:none;z-index:0;opacity:.85;
-    transition:opacity .3s;
+  .container{max-width:600px;margin:0 auto;position:relative;z-index:1}
+  .container::before,.container::after{
+    content:"";position:absolute;width:44px;height:44px;
+    pointer-events:none;z-index:0;opacity:.9;transition:opacity .3s;
   }
-  .container::before{
-    top:-8px;left:-8px;
-    border-top:2px solid var(--bracket);
-    border-left:2px solid var(--bracket);
-  }
-  .container::after{
-    bottom:-8px;right:-8px;
-    border-bottom:2px solid var(--bracket2);
-    border-right:2px solid var(--bracket2);
-  }
+  .container::before{top:-12px;left:-12px;border-top:2.5px solid var(--bracket);border-left:2.5px solid var(--bracket);border-top-left-radius:6px}
+  .container::after{bottom:-12px;right:-12px;border-bottom:2.5px solid var(--bracket2);border-right:2.5px solid var(--bracket2);border-bottom-right-radius:6px}
 
-  /* ═══════════ Header & Nastaliq Title ═══════════ */
-  .header{text-align:center;margin-bottom:24px;position:relative;padding:10px 0 20px}
-  .header::after{
-    content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-    width:60%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--p),var(--qu),var(--p),transparent);
-    opacity:.6;
-  }
-  
-  /* فونت نستعلیق و رنگ مشکی برای تیتر */
-  h1{
-    margin:0;font-size:3.2rem;font-weight:700;line-height:2; /* ارتفاع بیشتر برای نستعلیق */
-    font-family: 'Noto Nastaliq Urdu', serif; /* فونت نستعلیق */
-    color: #111; /* مشکی توپر در حالت روشن */
-    text-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    animation: titleGlow 4s ease-in-out infinite alternate;
-  }
-  [data-theme="dark"] h1 {
-    color: #fff; /* سفید درخشان در حالت تاریک */
-    text-shadow: 0 4px 20px rgba(255,255,255,0.15), 0 0 40px rgba(124,95,211,0.3);
-  }
-  
-  @keyframes titleGlow{
-    0%{filter:drop-shadow(0 0 2px rgba(124,95,211,.1))}
-    100%{filter:drop-shadow(0 0 10px rgba(124,95,211,.3))}
-  }
-  
-  .h1-en{
-    display:block;font-size:.85rem;font-weight:800;color:var(--mu);
-    letter-spacing:8px;margin-top:-10px;-webkit-text-fill-color:var(--mu);
-    text-indent:8px; font-family: 'Vazirmatn', sans-serif;
-  }
-  .h1-sub{display:block;font-size:.75rem;color:var(--qu);letter-spacing:3px;margin-top:4px;font-weight:700}
+  .header{text-align:center;margin-bottom:32px;position:relative;padding:20px 0 28px}
+  .header::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:70%;height:1px;background:var(--grad-divider);opacity:.55}
 
-  /* Theme toggle */
-  .theme-btn{position:absolute;top:8px;inset-inline-end:0;width:44px;height:44px;
-     border-radius:50%;background:var(--sf);border:1px solid var(--bd);cursor:pointer;
-     font-size:1.2rem;display:grid;place-items:center;box-shadow:var(--sh);
-     transition:transform .2s,background .2s;z-index:10;color:var(--tx)}
+  .theme-btn{
+    position:absolute;top:8px;inset-inline-end:0;width:46px;height:46px;border-radius:50%;
+    background:var(--sf);border:1px solid var(--bd);cursor:pointer;font-size:1.15rem;
+    display:grid;place-items:center;box-shadow:var(--sh-sm);
+    transition:transform .2s,background .25s,border-color .25s;z-index:10;color:var(--tx);
+    backdrop-filter:blur(10px);
+  }
+  .theme-btn:hover{transform:scale(1.06);border-color:var(--gold)}
   .theme-btn:active{transform:scale(.92)}
-  [data-theme="dark"] .theme-btn{border-color:rgba(139,111,78,.3)}
+  [data-theme="dark"] .theme-btn{border-color:rgba(212,175,55,.28);background:rgba(16,16,24,.7)}
 
-  /* ═══════════ Instruction ═══════════ */
-  .instruction{padding:14px 18px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);
-     -webkit-backdrop-filter:blur(14px);
-     border-right:4px solid var(--pl);border-radius:var(--r2);font-size:.88rem;margin-bottom:14px;
-     box-shadow:var(--sh);line-height:1.7}
-  [data-theme="dark"] .instruction{background:rgba(17,17,20,.75);border-right-color:var(--p)}
+  h1{
+    margin:0;font-size:3.6rem;font-weight:700;line-height:2;
+    font-family:'Noto Nastaliq Urdu','Vazirmatn',serif;
+    color:#0a0a0a;letter-spacing:0;position:relative;display:inline-block;
+    text-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 32px rgba(20,15,5,.10),0 0 60px rgba(184,147,90,.06);
+    animation:titleFloat 6s ease-in-out infinite;
+  }
+  [data-theme="dark"] h1{
+    color:#f8f8fa;background:linear-gradient(180deg,#ffffff 0%,#e8c87a 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    text-shadow:none;
+    filter:drop-shadow(0 0 30px rgba(212,175,55,.22)) drop-shadow(0 4px 20px rgba(0,0,0,.5));
+    animation:titleFloat 6s ease-in-out infinite, titleShimmer 8s ease-in-out infinite;
+  }
+  @keyframes titleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  @keyframes titleShimmer{
+    0%,100%{filter:drop-shadow(0 0 30px rgba(212,175,55,.22)) drop-shadow(0 4px 20px rgba(0,0,0,.5))}
+    50%{filter:drop-shadow(0 0 45px rgba(212,175,55,.36)) drop-shadow(0 4px 20px rgba(0,0,0,.5))}
+  }
 
-  /* ═══════════ Buttons ═══════════ */
-  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;
-     border:none;border-radius:var(--r);font-family:inherit;font-size:1rem;font-weight:700;
-     cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;
-     position:relative;overflow:hidden;letter-spacing:-.2px}
-  .btn:active:not(:disabled){transform:scale(.985)}
-  .btn:disabled{background:var(--bd);color:var(--mu);cursor:not-allowed;opacity:.7}
-  .btn--primary{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(139,111,78,.35)}
-  .btn--primary:hover:not(:disabled){box-shadow:0 6px 24px rgba(139,111,78,.5)}
-  .btn--secondary{background:var(--sf);color:var(--p);border:1.5px solid var(--p)}
-  .btn--secondary:hover{background:var(--p);color:#fff}
-  .btn--ghost{background:transparent;color:var(--mu)}
-  .btn--ghost:hover{color:var(--p)}
-  .btn--quantum{background:var(--gradq);color:#fff;
-     box-shadow:0 4px 20px rgba(91,63,168,.4),inset 0 1px 0 rgba(255,255,255,.15)}
-  .btn--quantum:hover:not(:disabled){box-shadow:0 6px 28px rgba(91,63,168,.6)}
-  .actions{display:flex;flex-direction:column;gap:10px}
+  .brand-line{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:-6px}
+  .brand-line .line{display:block;height:1px;width:40px;background:linear-gradient(90deg,transparent,var(--gold-l),var(--gold))}
+  .brand-line .line:last-child{background:linear-gradient(90deg,var(--gold),var(--gold-l),transparent)}
+  .h1-en{display:inline-block;font-size:.85rem;font-weight:800;color:var(--gold);letter-spacing:10px;font-family:'Vazirmatn',sans-serif;text-indent:10px;padding:0 4px;text-shadow:0 0 20px rgba(184,147,90,.15)}
+  [data-theme="dark"] .h1-en{color:var(--gold-l);text-shadow:0 0 24px rgba(232,200,122,.28)}
+  .h1-sub{display:block;font-size:.7rem;color:var(--qu);letter-spacing:4px;margin-top:10px;font-weight:700;font-family:'Vazirmatn',sans-serif;opacity:.9}
+  [data-theme="dark"] .h1-sub{color:var(--qu-x)}
+
+  .instruction{
+    padding:18px 22px;background:rgba(255,255,255,.82);
+    backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);
+    border:1px solid var(--hairline);border-inline-end:4px solid var(--gold);
+    border-radius:var(--r-2);font-size:.9rem;margin-bottom:16px;
+    box-shadow:var(--sh-sm);line-height:1.8;
+  }
+  .instruction strong{color:var(--tx);font-weight:800}
+  [data-theme="dark"] .instruction{background:rgba(16,16,24,.72);border-color:rgba(212,175,55,.18);border-inline-end-color:var(--gold)}
+
+  .camera-view{
+    display:none;position:relative;border-radius:var(--r);overflow:hidden;
+    margin-bottom:16px;box-shadow:var(--sh);background:#000;border:1px solid var(--hairline);
+  }
+  .camera-view.is-visible{display:block;animation:slideIn .3s ease-out}
+  .camera-view video{display:block;width:100%;max-height:380px;object-fit:cover;background:#000}
+  .camera-controls{position:absolute;bottom:12px;inset-inline:12px;display:flex;gap:8px;z-index:5}
+  .camera-controls .btn{flex:1;backdrop-filter:blur(10px);background:rgba(255,255,255,.92);color:var(--tx);border:1px solid rgba(255,255,255,.2);padding:12px}
+  [data-theme="dark"] .camera-controls .btn{background:rgba(16,16,24,.85);color:var(--tx);border:1px solid rgba(212,175,55,.3)}
+  .camera-controls .btn--primary{background:var(--grad-gold);color:#fff;border:none}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;padding:15px 18px;border:none;border-radius:var(--r-2);
+    font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;
+    transition:all .22s cubic-bezier(.4,0,.2,1);-webkit-tap-highlight-color:transparent;
+    position:relative;overflow:hidden;letter-spacing:-.15px;
+  }
+  .btn::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);transform:translateX(-150%);transition:transform .8s ease;pointer-events:none}
+  .btn:hover::after{transform:translateX(150%)}
+  .btn:active:not(:disabled){transform:scale(.982)}
+  .btn:disabled{background:var(--bd-2);color:var(--mu-2);cursor:not-allowed;opacity:.65}
+  .btn:disabled::after{display:none}
+  .btn--primary{background:var(--grad-gold);color:#fff;box-shadow:var(--sh-gold)}
+  .btn--primary:hover:not(:disabled){background:var(--grad-gold-h);box-shadow:0 8px 32px rgba(184,147,90,.42),0 2px 8px rgba(184,147,90,.24);transform:translateY(-1px)}
+  .btn--secondary{background:var(--sf);color:var(--gold-d);border:1.5px solid var(--gold);box-shadow:var(--sh-xs)}
+  .btn--secondary:hover:not(:disabled){background:var(--grad-gold);color:#fff;border-color:transparent;box-shadow:var(--sh-gold)}
+  [data-theme="dark"] .btn--secondary{color:var(--gold-l);background:rgba(20,20,30,.6);border-color:rgba(212,175,55,.35)}
+  .btn--ghost{background:transparent;color:var(--mu);border:1.5px solid transparent}
+  .btn--ghost:hover{color:var(--gold);border-color:var(--bd)}
+  .btn--quantum{background:var(--grad-qu);color:#fff;box-shadow:var(--sh-qu);padding:17px 18px}
+  .btn--quantum:hover:not(:disabled){box-shadow:0 8px 36px rgba(91,33,182,.5),0 2px 10px rgba(91,33,182,.28);transform:translateY(-1px)}
+
+  .actions{display:flex;flex-direction:column;gap:12px}
+  .action-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 
-  /* ═══════════ Preview ═══════════ */
-  .preview{display:none;position:relative;border-radius:var(--r);overflow:hidden;
-     margin-bottom:14px;box-shadow:var(--sh);background:#000;
-     border:1px solid rgba(139,111,78,.15)}
-  .preview.is-visible{display:block;animation:slideIn .3s ease-out}
-  .preview img{display:block;width:100%;max-height:340px;object-fit:cover}
+  .preview{display:none;position:relative;border-radius:var(--r);overflow:hidden;margin-bottom:16px;box-shadow:var(--sh);background:#000;border:1px solid var(--hairline)}
+  .preview.is-visible{display:block;animation:slideIn .4s cubic-bezier(.4,0,.2,1)}
+  .preview img{display:block;width:100%;max-height:380px;object-fit:cover}
   .preview canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
-  .preview__remove{position:absolute;top:8px;inset-inline-start:8px;width:36px;height:36px;
-     padding:0;border:none;border-radius:50%;background:rgba(0,0,0,.7);color:#fff;
-     font-size:18px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px);z-index:2}
-  .preview__badge{position:absolute;top:8px;inset-inline-end:8px;padding:5px 12px;
-     background:rgba(91,63,168,.9);color:#fff;font-size:.7rem;font-weight:800;
-     border-radius:999px;backdrop-filter:blur(6px);letter-spacing:.5px;
-     box-shadow:0 2px 12px rgba(91,63,168,.5)}
+  .preview__remove{position:absolute;top:10px;inset-inline-start:10px;width:38px;height:38px;padding:0;border:none;border-radius:50%;background:rgba(0,0,0,.72);color:#fff;font-size:19px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(8px);z-index:2;transition:background .2s,transform .2s}
+  .preview__remove:hover{background:rgba(220,38,38,.85);transform:scale(1.05)}
+  .preview__badge{position:absolute;top:10px;inset-inline-end:10px;padding:6px 14px;background:linear-gradient(135deg,rgba(91,33,182,.95),rgba(124,58,237,.95));color:#fff;font-size:.72rem;font-weight:800;border-radius:var(--r-pill);backdrop-filter:blur(8px);letter-spacing:.6px;box-shadow:0 4px 16px rgba(91,33,182,.55),inset 0 1px 0 rgba(255,255,255,.2);animation:badgePulse 2.4s ease-in-out infinite}
+  @keyframes badgePulse{0%,100%{box-shadow:0 4px 16px rgba(91,33,182,.55),inset 0 1px 0 rgba(255,255,255,.2)}50%{box-shadow:0 4px 24px rgba(124,58,237,.75),inset 0 1px 0 rgba(255,255,255,.3)}}
 
-  /* ═══════════ Loading ═══════════ */
-  .loading{display:none;text-align:center;padding:32px 20px;
-     background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
-     border-radius:var(--r);box-shadow:var(--sh);
-     border:1px solid rgba(139,111,78,.12)}
-  [data-theme="dark"] .loading{background:rgba(17,17,20,.85)}
-  .loading.is-visible{display:block;animation:fadeIn .3s}
-  .spinner{width:52px;height:52px;margin:0 auto 18px;position:relative}
-  .spinner::before,.spinner::after{content:"";position:absolute;inset:0;border-radius:50%;
-     border:3px solid transparent}
-  .spinner::before{border-top-color:var(--qu);animation:spin .8s linear infinite}
-  .spinner::after{border-bottom-color:var(--qug);animation:spin 1.2s linear infinite reverse;inset:4px}
+  .loading{display:none;text-align:center;padding:40px 24px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px) saturate(140%);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--hairline)}
+  [data-theme="dark"] .loading{background:rgba(16,16,24,.82)}
+  .loading.is-visible{display:block;animation:fadeIn .35s}
+  .spinner{width:60px;height:60px;margin:0 auto 22px;position:relative}
+  .spinner::before,.spinner::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid transparent}
+  .spinner::before{border-top-color:var(--gold);border-right-color:var(--gold);animation:spin .9s cubic-bezier(.5,.2,.5,.8) infinite}
+  .spinner::after{border-bottom-color:var(--qu-l);border-left-color:var(--qu-l);animation:spin 1.3s linear infinite reverse;inset:6px}
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-  @keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-  .progress{height:6px;background:var(--bd);border-radius:3px;overflow:hidden;margin:0 0 14px;position:relative}
-  .progress__fill{height:100%;background:var(--gradq);width:0%;border-radius:3px;
-     transition:width .4s ease;position:relative;overflow:hidden}
-  .progress__fill::after{content:"";position:absolute;inset:0;
-     background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
-     animation:shimmer 1.5s infinite}
+  .progress{height:7px;background:var(--bd-2);border-radius:4px;overflow:hidden;margin:0 0 18px;position:relative;box-shadow:inset 0 1px 2px rgba(0,0,0,.05)}
+  .progress__fill{height:100%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-l) 50%,var(--qu-l) 100%);width:0%;border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;box-shadow:0 0 12px rgba(184,147,90,.4)}
+  .progress__fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:shimmer 1.6s infinite}
   @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-  #loading-text{margin:0;color:var(--qu);font-weight:700;font-size:.9rem;min-height:1.4em}
-  [data-theme="dark"] #loading-text{color:var(--qug)}
+  #loading-text{margin:0;color:var(--qu);font-weight:700;font-size:.92rem;min-height:1.4em;letter-spacing:.2px}
+  [data-theme="dark"] #loading-text{color:var(--qu-x)}
 
-  /* ═══════════ Alerts ═══════════ */
-  .alert{display:none;padding:12px 16px;border-radius:var(--r2);font-size:.88rem;margin-top:12px}
+  .alert{display:none;padding:14px 18px;border-radius:var(--r-2);font-size:.88rem;margin-top:14px;font-weight:500;line-height:1.7}
   .alert.is-visible{display:block;animation:slideIn .3s}
-  .alert--error{background:var(--erb);color:var(--er);border-right:4px solid var(--er)}
-  .alert--warn{background:var(--warnb);color:var(--warn);border-right:4px solid var(--warn)}
+  .alert--error{background:var(--erb);color:var(--er);border-inline-end:4px solid var(--er)}
+  .alert--warn{background:var(--warnb);color:var(--warn);border-inline-end:4px solid var(--warn)}
 
-  /* ═══════════ Cards ═══════════ */
-  .result{display:none;margin-top:14px}
-  .result.is-visible{display:block;animation:slideIn .4s}
-  .card{background:rgba(255,255,255,.95);backdrop-filter:blur(14px);
-     -webkit-backdrop-filter:blur(14px);
-     border-radius:var(--r);padding:20px;box-shadow:var(--sh);margin-bottom:14px;
-     border:1px solid rgba(139,111,78,.10);position:relative}
-  [data-theme="dark"] .card{background:rgba(17,17,20,.82);border-color:rgba(139,111,78,.10)}
+  .result{display:none;margin-top:16px}
+  .result.is-visible{display:block;animation:slideIn .5s cubic-bezier(.4,0,.2,1)}
 
-  .result__shape{text-align:center;padding-bottom:14px;margin-bottom:14px;
-     border-bottom:1px solid var(--bd)}
-  .result__shape-label{display:block;font-size:.82rem;color:var(--mu)}
-  .result__shape-value{display:block;font-size:2.4rem;font-weight:900;color:var(--p);
-     margin-top:4px;letter-spacing:-1.5px;line-height:1.2}
-  .result__shape-en{display:block;font-size:.8rem;color:var(--mu);margin-top:2px;
-     letter-spacing:2px;text-transform:uppercase}
+  .card{
+    background:rgba(255,255,255,.94);backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-radius:var(--r);padding:24px;box-shadow:var(--sh);
+    margin-bottom:16px;border:1px solid var(--hairline);position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-divider);opacity:.6}
+  [data-theme="dark"] .card{background:rgba(16,16,24,.82);border-color:rgba(212,175,55,.12)}
 
-  /* Confidence */
-  .conf{display:flex;align-items:center;gap:10px;justify-content:center;margin:8px 0 14px}
-  .conf__bar{flex:0 0 180px;height:10px;background:var(--bd);border-radius:5px;
-     overflow:hidden;position:relative}
-  .conf__fill{height:100%;background:var(--grad);border-radius:5px;
-     transition:width 1.2s cubic-bezier(.4,0,.2,1)}
-  .conf__pct{font-size:.88rem;color:var(--mu);font-weight:800;font-variant-numeric:tabular-nums}
+  .age-badge-wrap{text-align:center;margin-bottom:18px}
+  .age-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:9px 18px;border-radius:var(--r-pill);
+    font-size:.9rem;font-weight:800;
+    box-shadow:var(--sh-sm);border:1.5px solid;
+    animation:badgePulse 2.8s ease-in-out infinite;
+  }
+  .age-badge__icon{font-size:1.25rem;line-height:1}
+  .age-badge__conf{
+    font-size:.72rem;opacity:.85;padding-inline-start:10px;
+    border-inline-start:1.5px solid currentColor;
+    font-weight:700;letter-spacing:.3px;
+  }
+  .age-badge--child{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-color:#ffb74d;color:#e65100}
+  .age-badge--teen{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:#66bb6a;color:#2e7d32}
+  .age-badge--adult{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-color:#42a5f5;color:#1565c0}
+  [data-theme="dark"] .age-badge--child{background:linear-gradient(135deg,#3e2723,#4e342e);border-color:#ffb74d;color:#ffcc80}
+  [data-theme="dark"] .age-badge--teen{background:linear-gradient(135deg,#1b5e20,#2e7d32);border-color:#66bb6a;color:#a5d6a7}
+  [data-theme="dark"] .age-badge--adult{background:linear-gradient(135deg,#0d47a1,#1565c0);border-color:#42a5f5;color:#90caf9}
 
-  /* ═══════════ Quantum box ═══════════ */
-  .quantum-box{background:linear-gradient(135deg,rgba(244,240,255,.9) 0%,rgba(255,255,255,.9) 100%);
-     border:1px solid var(--qub);border-radius:10px;padding:14px 16px;margin:12px 0;
-     position:relative;overflow:hidden}
-  [data-theme="dark"] .quantum-box{background:linear-gradient(135deg,rgba(31,24,50,.85) 0%,rgba(17,17,20,.9) 100%)}
-  .quantum-box::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
-     background:var(--gradq2);background-size:200% 100%;animation:quantumFlow 3s linear infinite}
+  .age-metrics{
+    display:grid;grid-template-columns:1fr 1fr;gap:7px 14px;
+    margin:10px 0 18px;padding:12px 16px;
+    background:var(--bg-2);border-radius:var(--r-2);
+    border:1px solid var(--bd-2);font-size:.78rem;
+  }
+  [data-theme="dark"] .age-metrics{background:rgba(20,20,30,.5);border-color:rgba(212,175,55,.10)}
+  .age-metrics__item{display:flex;justify-content:space-between;gap:6px;align-items:center}
+  .age-metrics__lbl{color:var(--mu);font-weight:600}
+  .age-metrics__val{color:var(--tx);font-weight:800;font-variant-numeric:tabular-nums;font-size:.82rem}
+
+  .result__shape{text-align:center;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--bd);position:relative}
+  .result__shape::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:30%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .result__shape-label{display:block;font-size:.8rem;color:var(--mu);font-weight:600;letter-spacing:.3px}
+  .result__shape-value{display:block;font-size:3rem;font-weight:700;color:var(--gold-d);margin-top:8px;line-height:1.4;font-family:'Noto Nastaliq Urdu','Vazirmatn',serif;text-shadow:0 2px 20px rgba(184,147,90,.15);animation:shapeGlow 4s ease-in-out infinite alternate}
+  [data-theme="dark"] .result__shape-value{color:var(--gold-l);text-shadow:0 0 30px rgba(212,175,55,.4),0 2px 12px rgba(0,0,0,.4)}
+  @keyframes shapeGlow{0%{filter:drop-shadow(0 0 4px rgba(184,147,90,.08))}100%{filter:drop-shadow(0 0 16px rgba(184,147,90,.28))}}
+  .result__shape-en{display:block;font-size:.82rem;color:var(--mu);margin-top:6px;letter-spacing:4px;text-transform:uppercase;font-weight:700;font-family:'Vazirmatn',sans-serif}
+
+  .conf{display:flex;align-items:center;gap:14px;justify-content:center;margin:14px 0 20px;padding:12px 16px;background:var(--bg-2);border-radius:var(--r-2);border:1px solid var(--bd-2)}
+  [data-theme="dark"] .conf{background:rgba(20,20,30,.5);border-color:rgba(212,175,55,.10)}
+  .conf__bar{flex:0 0 200px;height:11px;background:var(--bd-2);border-radius:6px;overflow:hidden;position:relative;box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+  .conf__fill{height:100%;background:var(--grad-gold);border-radius:6px;transition:width 1.4s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px var(--gold-glow);position:relative}
+  .conf__fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:shimmer 2s infinite}
+  .conf__pct{font-size:.9rem;color:var(--tx-2);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+
+  .quantum-box{
+    background:linear-gradient(135deg,rgba(244,240,255,.94) 0%,rgba(255,255,255,.94) 100%);
+    border:1px solid var(--qu-l);border-radius:var(--r-2);padding:18px 20px;
+    margin:14px 0;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(91,33,182,.10);
+  }
+  [data-theme="dark"] .quantum-box{background:linear-gradient(135deg,rgba(31,24,50,.85) 0%,rgba(16,16,24,.92) 100%);border-color:rgba(167,139,250,.28);box-shadow:0 4px 24px rgba(124,58,237,.20)}
+  .quantum-box::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--grad-qu-flow);background-size:200% 100%;animation:quantumFlow 3.5s linear infinite;box-shadow:0 0 12px rgba(124,58,237,.5)}
   @keyframes quantumFlow{0%{background-position:0% 0}100%{background-position:200% 0}}
-  .quantum-box__title{font-size:.75rem;color:var(--qu);font-weight:800;margin-bottom:12px;
-     letter-spacing:.04em;display:flex;align-items:center;gap:6px}
-  [data-theme="dark"] .quantum-box__title{color:var(--qug)}
-  .quantum-box__title::before{content:"⚛";font-size:1rem;animation:spin 4s linear infinite}
-  .quantum-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
-  .qm{display:flex;flex-direction:column;gap:2px}
-  .qm__label{font-size:.7rem;color:var(--mu)}
-  .qm__val{font-size:.95rem;font-weight:800;color:var(--tx);font-variant-numeric:tabular-nums}
-  .qm__val--qu{color:var(--qu)}
-  [data-theme="dark"] .qm__val--qu{color:var(--qug)}
+
+  .quantum-box__title{font-size:.78rem;color:var(--qu-d);font-weight:800;margin-bottom:16px;letter-spacing:.05em;display:flex;align-items:center;gap:8px;font-family:'Noto Nastaliq Urdu','Vazirmatn',serif;line-height:1.6}
+  [data-theme="dark"] .quantum-box__title{color:var(--qu-x)}
+  .quantum-box__title::before{content:"⚛";font-size:1.1rem;animation:spin 5s linear infinite;display:inline-block}
+
+  .quantum-metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+  .qm{display:flex;flex-direction:column;gap:4px}
+  .qm__label{font-size:.72rem;color:var(--mu);font-weight:600;letter-spacing:.2px}
+  .qm__val{font-size:1rem;font-weight:800;color:var(--tx);font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+  .qm__val--qu{color:var(--qu-d)}
+  [data-theme="dark"] .qm__val--qu{color:var(--qu-x)}
   .qm__val--ok{color:var(--ok)}
   .qm__val--warn{color:var(--warn)}
 
-  /* Probability chart */
-  .prob-chart{margin:14px 0 4px;padding-top:12px;border-top:1px dashed var(--bd)}
-  .prob-chart__title{font-size:.75rem;color:var(--mu);font-weight:700;margin-bottom:10px}
-  .prob-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:.8rem}
-  .prob-label{width:56px;color:var(--mu);font-weight:500}
-  .prob-bar{flex:1;height:8px;background:var(--bd);border-radius:4px;overflow:hidden;position:relative}
-  .prob-fill{height:100%;background:var(--grad);border-radius:4px;width:0;
-     transition:width 1.1s cubic-bezier(.4,0,.2,1)}
-  .prob-pct{width:48px;text-align:left;font-variant-numeric:tabular-nums;
-     color:var(--mu);font-weight:700;font-size:.72rem}
-  .prob-row--top .prob-fill{background:var(--gradq)}
-  .prob-row--top .prob-pct{color:var(--qu);font-weight:900}
-  [data-theme="dark"] .prob-row--top .prob-pct{color:var(--qug)}
-  .prob-row--top .prob-label{color:var(--qu);font-weight:800}
-  [data-theme="dark"] .prob-row--top .prob-label{color:var(--qug)}
+  .sv-viz{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+  .sv-col{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .sv-bar{width:100%;height:80px;background:var(--bd-2);border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:flex-end;box-shadow:inset 0 1px 2px rgba(0,0,0,.05)}
+  .sv-bar__fill{width:100%;border-radius:4px 4px 0 0;transition:height 1.2s cubic-bezier(.4,0,.2,1);box-shadow:0 -2px 10px currentColor;min-height:3px}
+  .sv-label{font-size:.58rem;color:var(--mu);font-weight:600;white-space:nowrap;text-align:center}
+  .sv-val{font-size:.62rem;color:var(--qu-d);font-weight:800;font-variant-numeric:tabular-nums}
+  [data-theme="dark"] .sv-val{color:var(--qu-x)}
 
-  /* ═══════════ Prefs ═══════════ */
-  .prefs{margin:16px 0}
-  .prefs__row{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-  .prefs__label{font-size:.82rem;color:var(--mu);font-weight:700}
-  .chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{padding:6px 12px;border:1.5px solid var(--bd);background:var(--sf);
-     border-radius:999px;font-family:inherit;font-size:.78rem;color:var(--tx);
-     cursor:pointer;transition:all .15s;font-weight:600}
-  .chip:hover{border-color:var(--pl);transform:translateY(-1px)}
-  .chip--active{background:var(--p);border-color:var(--p);color:#fff;font-weight:700;
-     box-shadow:0 2px 10px rgba(139,111,78,.4)}
+  .em-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;max-width:290px;margin:0 auto}
+  .em-cell{aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;transition:transform .2s,box-shadow .2s;cursor:default}
+  .em-cell:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(124,58,237,.3);z-index:2}
+  .em-header{background:var(--bg-2)!important;color:var(--mu)!important;font-weight:700;font-size:.62rem;box-shadow:none!important;cursor:default}
+  [data-theme="dark"] .em-header{background:rgba(30,30,42,.8)!important}
+  .em-corner{background:transparent!important;box-shadow:none!important}
+  .em-legend{display:flex;justify-content:space-between;font-size:.65rem;color:var(--mu);margin-top:8px;padding:0 8px;font-weight:600}
 
-  /* ═══════════ Style cards ═══════════ */
-  .result__title{margin:16px 0 12px;font-weight:800;display:flex;justify-content:space-between;
-     align-items:center;font-size:.95rem}
-  .result__count{font-size:.8rem;color:var(--mu);font-weight:500}
+  .quantum-adv{margin-top:16px;padding-top:14px;border-top:1px dashed var(--bd)}
+  .quantum-adv__title{font-size:.74rem;color:var(--qu-d);font-weight:800;margin-bottom:12px;letter-spacing:.3px;display:flex;align-items:center;gap:6px}
+  [data-theme="dark"] .quantum-adv__title{color:var(--qu-x)}
 
-  .style-card{display:flex;gap:12px;padding:12px;background:var(--bg);border-radius:10px;
-     margin-bottom:10px;border:1px solid transparent;transition:all .2s;
-     animation:slideIn .35s ease-out both;align-items:center}
-  [data-theme="dark"] .style-card{background:rgba(30,30,36,.55)}
-  .style-card:hover{border-color:var(--pl);box-shadow:var(--sh);transform:translateY(-1px)}
+  .age-warning{margin-top:12px;padding:11px 14px;border-radius:var(--r-2);font-size:.82rem;font-weight:600;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+  .age-warning--child{background:#fff8e1;color:#e65100;border-inline-end:4px solid #ff9800}
+  .age-warning--teen{background:#e8f5e9;color:#2e7d32;border-inline-end:4px solid #66bb6a}
+  [data-theme="dark"] .age-warning--child{background:rgba(62,39,35,.5);color:#ffcc80;border-color:#ff9800}
+  [data-theme="dark"] .age-warning--teen{background:rgba(27,94,32,.4);color:#a5d6a7;border-color:#66bb6a}
 
-  .style-img{width:70px;height:70px;border-radius:8px;object-fit:cover;flex-shrink:0;
-     box-shadow:0 2px 8px rgba(0,0,0,0.15);border:1px solid rgba(139,111,78,.15)}
+  .prob-chart{margin:18px 0 4px;padding-top:16px;border-top:1px dashed var(--bd)}
+  .prob-chart__title{font-size:.76rem;color:var(--mu);font-weight:700;margin-bottom:14px;letter-spacing:.2px}
+  .prob-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:.82rem}
+  .prob-label{width:62px;color:var(--mu);font-weight:600;font-size:.78rem}
+  .prob-bar{flex:1;height:9px;background:var(--bd-2);border-radius:5px;overflow:hidden;position:relative;box-shadow:inset 0 1px 2px rgba(0,0,0,.05)}
+  .prob-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-l));border-radius:5px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);position:relative}
+  .prob-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 2.5s infinite}
+  .prob-pct{width:52px;text-align:left;font-variant-numeric:tabular-nums;color:var(--mu);font-weight:700;font-size:.74rem}
+  .prob-row--top .prob-fill{background:linear-gradient(90deg,var(--qu),var(--qu-l),var(--qu-x));box-shadow:0 0 12px rgba(124,58,237,.4)}
+  .prob-row--top .prob-pct{color:var(--qu-d);font-weight:900;font-size:.8rem}
+  [data-theme="dark"] .prob-row--top .prob-pct{color:var(--qu-x)}
+  .prob-row--top .prob-label{color:var(--qu-d);font-weight:800;font-size:.8rem}
+  [data-theme="dark"] .prob-row--top .prob-label{color:var(--qu-x)}
 
+  .prefs{margin:20px 0}
+  .prefs__row{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+  .prefs__label{font-size:.82rem;color:var(--mu);font-weight:700;letter-spacing:.2px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{padding:7px 15px;border:1.5px solid var(--bd);background:var(--sf);border-radius:var(--r-pill);font-family:inherit;font-size:.8rem;color:var(--tx-2);cursor:pointer;transition:all .18s cubic-bezier(.4,0,.2,1);font-weight:600;box-shadow:var(--sh-xs)}
+  .chip:hover{border-color:var(--gold-l);transform:translateY(-1.5px);box-shadow:0 4px 12px rgba(184,147,90,.15)}
+  .chip--active{background:var(--grad-gold);border-color:transparent;color:#fff;font-weight:700;box-shadow:var(--sh-gold);transform:translateY(-1px)}
+  .chip--active:hover{background:var(--grad-gold-h);box-shadow:0 6px 20px rgba(184,147,90,.4)}
+  [data-theme="dark"] .chip{background:rgba(20,20,30,.6);border-color:rgba(212,175,55,.18);color:var(--tx-2)}
+
+  .result__title{margin:24px 0 16px;font-weight:800;display:flex;justify-content:space-between;align-items:center;font-size:1.05rem;font-family:'Noto Nastaliq Urdu','Vazirmatn',serif;line-height:1.6;padding-bottom:10px;border-bottom:1px solid var(--bd)}
+  .result__count{font-size:.78rem;color:var(--mu);font-weight:600;font-family:'Vazirmatn',sans-serif;background:var(--bg-2);padding:4px 12px;border-radius:var(--r-pill)}
+  [data-theme="dark"] .result__count{background:rgba(20,20,30,.6)}
+
+  .style-card{display:flex;gap:14px;padding:14px;background:var(--bg-2);border-radius:var(--r-2);margin-bottom:12px;border:1px solid transparent;transition:all .25s cubic-bezier(.4,0,.2,1);animation:slideIn .4s ease-out both;align-items:center}
+  [data-theme="dark"] .style-card{background:rgba(24,24,34,.65);border-color:rgba(212,175,55,.06)}
+  .style-card:hover{border-color:var(--gold-l);box-shadow:0 8px 24px rgba(184,147,90,.14);transform:translateY(-2px);background:var(--sf)}
+  [data-theme="dark"] .style-card:hover{background:rgba(30,30,42,.8);border-color:rgba(212,175,55,.3);box-shadow:0 8px 28px rgba(212,175,55,.15)}
+  .style-img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.14);border:1px solid var(--hairline);transition:transform .3s}
+  .style-card:hover .style-img{transform:scale(1.04)}
   .style-body{flex:1;min-width:0}
-  .style-title{font-size:.95rem;font-weight:800}
-  .style-title-en{font-size:.75rem;color:var(--mu);font-weight:500;margin-inline-start:4px}
-  .style-why{font-size:.78rem;color:var(--qu);margin:4px 0 0;font-weight:600}
-  [data-theme="dark"] .style-why{color:var(--qug)}
-  .style-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
-  .tag{font-size:.7rem;padding:3px 9px;background:var(--sf);border:1px solid var(--bd);
-     border-radius:999px;color:var(--mu);font-weight:600}
+  .style-title{font-size:.98rem;font-weight:800;color:var(--tx);display:block;line-height:1.4}
+  .style-title-en{font-size:.74rem;color:var(--mu);font-weight:500;margin-inline-start:6px;letter-spacing:.4px}
+  .style-why{font-size:.79rem;color:var(--qu-d);margin:6px 0 0;font-weight:600;line-height:1.55}
+  [data-theme="dark"] .style-why{color:var(--qu-x)}
+  .style-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+  .tag{font-size:.72rem;padding:4px 10px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r-pill);color:var(--mu);font-weight:600;transition:all .15s}
+  [data-theme="dark"] .tag{background:rgba(16,16,24,.8);border-color:var(--bd-2)}
   .tag--diff{color:#b45309;border-color:#fde68a;background:#fffbeb}
   .tag--maint{color:var(--ok);border-color:#bbf7d0;background:var(--okb)}
-  .tag--img{background:#e8f0fe;color:#1a73e8;border-color:#a8c7fa;
-     text-decoration:none;display:inline-block;cursor:pointer;font-weight:700}
-  .tag--img:hover{background:#d2e3fc}
-  .tag--fav{background:var(--warnb);color:var(--warn);border-color:#fde68a;cursor:pointer;font-weight:700}
-  .tag--fav.is-active{background:var(--warn);color:#fff;border-color:var(--warn)}
+  .tag--img{background:#e8f0fe;color:#1a73e8;border-color:#a8c7fa;text-decoration:none;display:inline-block;cursor:pointer;font-weight:700}
+  .tag--img:hover{background:#d2e3fc;transform:translateY(-1px)}
+  .tag--fav{background:var(--warnb);color:var(--warn);border-color:#fde68a;cursor:pointer;font-weight:700;transition:all .2s}
+  .tag--fav:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(217,119,6,.2)}
+  .tag--fav.is-active{background:var(--warn);color:#fff;border-color:var(--warn);box-shadow:0 2px 10px rgba(217,119,6,.3)}
 
-  .result-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-  .empty{padding:28px;text-align:center;color:var(--mu);font-size:.9rem}
+  .result-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  .empty{padding:36px 24px;text-align:center;color:var(--mu);font-size:.9rem;background:var(--bg-2);border-radius:var(--r-2);border:1.5px dashed var(--bd);line-height:1.7}
+  [data-theme="dark"] .empty{background:rgba(20,20,30,.4);border-color:rgba(212,175,55,.15)}
 
-  /* ═══════════ Footer ═══════════ */
-  .footer{text-align:center;margin-top:36px;font-size:.75rem;color:var(--mu);padding-bottom:16px}
-  .footer strong{color:var(--p);font-weight:800}
-  .footer small{display:block;margin-top:4px;font-size:.65rem;color:var(--qu);opacity:.8;letter-spacing:1px}
-  [data-theme="dark"] .footer small{color:var(--qug)}
+  .footer{text-align:center;margin-top:44px;font-size:.78rem;color:var(--mu);padding-bottom:20px;position:relative}
+  .footer::before{content:"";position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .footer strong{color:var(--gold-d);font-weight:800}
+  [data-theme="dark"] .footer strong{color:var(--gold-l)}
+  .footer small{display:block;margin-top:6px;font-size:.68rem;color:var(--qu);opacity:.85;letter-spacing:1.5px;font-weight:600}
+  [data-theme="dark"] .footer small{color:var(--qu-x)}
 
-  .toast{position:fixed;bottom:20px;inset-inline:20px;max-width:340px;margin:0 auto;
-     padding:12px 18px;background:var(--tx);color:var(--bg);border-radius:10px;
-     font-size:.85rem;font-weight:600;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.4);
-     transform:translateY(100px);opacity:0;transition:all .35s ease;z-index:1000}
+  .toast{position:fixed;bottom:24px;inset-inline:20px;max-width:360px;margin:0 auto;padding:14px 20px;background:linear-gradient(135deg,rgba(15,15,20,.96),rgba(30,30,40,.96));color:#fff;border-radius:var(--r-2);font-size:.86rem;font-weight:600;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 0 1px rgba(212,175,55,.2);transform:translateY(120px);opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);z-index:1000;backdrop-filter:blur(12px)}
   .toast.is-visible{transform:translateY(0);opacity:1}
 
   [hidden]{display:none!important}
-  @media (max-width:380px){
-    h1{font-size:2.6rem}
+
+  /* ══════════ ⛔ صفحه تعطیلی سایت ══════════ */
+  #site-closed {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #06060a;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  #site-closed .closed-box {
+    max-width: 420px;
+    text-align: center;
+    padding: 44px 32px;
+    background: linear-gradient(135deg, rgba(16,16,24,.95), rgba(10,10,16,.98));
+    border: 1px solid rgba(212,175,55,.25);
+    border-radius: 24px;
+    box-shadow: 0 24px 80px rgba(0,0,0,.7), 0 0 80px rgba(212,175,55,.12);
+    position: relative;
+    overflow: hidden;
+  }
+  #site-closed .closed-box::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, #b8935a, #7c3aed, #b8935a, transparent);
+  }
+  #site-closed .closed-icon { font-size: 4rem; margin-bottom: 18px; display: block; animation: titleFloat 4s ease-in-out infinite; }
+  #site-closed .closed-title {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 2rem;
+    color: #e8c87a;
+    margin: 0 0 14px;
+    line-height: 1.5;
+    text-shadow: 0 0 30px rgba(212,175,55,.3);
+  }
+  #site-closed .closed-msg { color: #8a8a94; font-size: .9rem; line-height: 1.9; margin: 0; }
+  #site-closed .closed-footer { margin-top: 20px; font-size: .65rem; color: #444; letter-spacing: 3px; }
+
+  @media (max-width:420px){
+    body{padding:16px 12px 32px}
+    h1{font-size:3rem}
+    .result__shape-value{font-size:2.4rem}
     .result-actions{grid-template-columns:1fr}
     .quantum-metrics{grid-template-columns:1fr}
-    .style-img{width:60px;height:60px}
+    .age-metrics{grid-template-columns:1fr}
+    .style-img{width:64px;height:64px}
+    .card{padding:20px}
+    .brand-line .line{width:28px}
+    .h1-en{letter-spacing:7px;text-indent:7px;font-size:.78rem}
+    .conf{flex-direction:column;gap:8px;padding:14px}
+    .conf__bar{flex:0 0 auto;width:100%}
+    .sv-bar{height:65px}
+    .sv-label{font-size:.52rem}
+    .sv-val{font-size:.55rem}
+  }
+  @media (max-width:340px){
+    h1{font-size:2.6rem}
+    .header{padding:16px 0 22px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   }
 </style>
 </head>
 <body>
-<div class="container">
+<!-- ⛔ صفحه تعطیلی — فقط وقتی SITE_STATUS = "off" نمایش داده می‌شود -->
+<div id="site-closed">
+  <div class="closed-box">
+    <span class="closed-icon">🔧</span>
+    <h2 class="closed-title">هد لاین</h2>
+    <p class="closed-msg">
+      سرویس مشاور هوشمند موقتاً برای به‌روزرسانی بسته است.<br>
+      لطفاً بعداً مراجعه کنید.
+    </p>
+    <div class="closed-footer">HEADLINE · TEMPORARILY OFFLINE</div>
+  </div>
+</div>
+
+<div class="container" id="app-container">
   <header class="header">
-    <button class="theme-btn" id="theme-toggle" aria-label="تغییر تم" type="button">☀️</button>
-    <h1>هد لاین <span class="h1-en">HEADLINE</span></h1>
-    <span class="h1-sub">⚛ QUANTUM PRO ENGINE v2.0</span>
+    <button class="theme-btn" id="theme-toggle" aria-label="تغییر تم" type="button">🌙</button>
+    <h1>هد لاین</h1>
+    <div class="brand-line">
+      <span class="line"></span>
+      <span class="h1-en">HEADLINE</span>
+      <span class="line"></span>
+    </div>
+    <span class="h1-sub">⚛ QUANTUM PRO ENGINE v3.0 · AGE-AWARE</span>
   </header>
 
   <section id="step-upload">
-    <p class="instruction">📷 عکس <strong>روبه‌رو</strong>، نور خوب، بدون لبخند، مو عقب. <br><small style="color:var(--qu)">⚛ موتور فوق‌کوانتومی با ۴۷۸ نقطه چهره + تحلیل درهم‌تنیدگی</small></p>
+    <p class="instruction">📷 عکس <strong>روبه‌رو</strong>، نور خوب، بدون لبخند، مو عقب. <br><small style="color:var(--qu)">⚛ موتور فوق‌کوانتومی v3.0 — ۴۷۸ نقطه + تشخیص سن + تحلیل درهم‌تنیدگی</small></p>
+
+    <div id="camera-view" class="camera-view">
+      <video id="video" autoplay playsinline></video>
+      <div class="camera-controls">
+        <button id="btn-capture" class="btn btn--primary" type="button">📸 عکس بگیر</button>
+        <button id="btn-cancel-cam" class="btn btn--ghost" type="button">لغو</button>
+      </div>
+    </div>
 
     <div id="preview" class="preview" aria-live="polite">
       <img id="preview-img" alt="پیش‌نمایش عکس">
@@ -369,9 +525,12 @@
     </div>
 
     <div class="actions">
-      <label for="gallery-input" class="btn btn--primary" role="button" tabindex="0">📸 انتخاب عکس</label>
+      <div class="action-row">
+        <button id="btn-start-camera" class="btn btn--primary" type="button">📸 دوربین</button>
+        <label for="gallery-input" class="btn btn--primary" role="button" tabindex="0">🖼️ گالری</label>
+      </div>
       <input type="file" id="gallery-input" class="vh" accept="image/jpeg,image/png,image/webp">
-      <button id="btn-analyze" class="btn btn--quantum" type="button" disabled>⚛ تحلیل فوق‌کوانتومی چهره</button>
+      <button id="btn-analyze" class="btn btn--quantum" type="button" disabled>⚛ تحلیل فوق‌کوانتومی چهره + سن</button>
     </div>
 
     <div id="error-box" class="alert alert--error" role="alert"></div>
@@ -428,14 +587,37 @@
 
   <footer class="footer">
     توسعه‌دهنده: <strong>امین راد</strong>
-    <small>⚛ Quantum Hair Advisor Engine — نسخه ۲.۰</small>
+    <small>⚛ Quantum Hair Advisor Engine v3.0 — Age-Aware</small>
   </footer>
 </div>
 
 <div class="toast" id="toast"></div>
-
 <script type="module">
 import { FaceLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
+
+/* ══════════════════════════════════════════════════════════════
+   🎛️ کلید روشن/خاموش سایت (فقط این یک خط رو عوض کن)
+   ══════════════════════════════════════════════════════════════
+   "on"  → سایت روشن و در دسترس همه (حالت عادی)
+   "off" → سایت خاموش، فقط پیام تعطیلی نمایش داده می‌شود
+   ══════════════════════════════════════════════════════════════ */
+const SITE_STATUS = "on";
+
+// اعمال کلید
+(function applySiteStatus() {
+  const closedEl = document.getElementById("site-closed");
+  const appEl = document.getElementById("app-container");
+  if (!closedEl || !appEl) return;
+  if (SITE_STATUS === "off") {
+    closedEl.style.display = "flex";
+    appEl.style.display = "none";
+    document.body.style.overflow = "hidden";
+  } else {
+    closedEl.style.display = "none";
+    appEl.style.display = "block";
+    document.body.style.overflow = "";
+  }
+})();
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -449,26 +631,30 @@ const els = {
   errorBox:$("error-box"), loadingText:$("loading-text"),
   progressFill:$("progress-fill"), themeToggle:$("theme-toggle"),
   toast:$("toast"), quantumPanel:$("quantum-panel"),
+  cameraView:$("camera-view"), video:$("video"),
+  btnStartCamera:$("btn-start-camera"), btnCapture:$("btn-capture"), btnCancelCam:$("btn-cancel-cam"),
 };
 
 let objectUrl = null, lastResult = null, lastImageEl = null;
 let prefs = {length:"all", vibe:"all"};
 let faceLandmarker = null, initPromise = null;
+let cameraStream = null;
 
 const SHAPE_FA = {oval:"بیضی",round:"گرد",square:"مربعی",heart:"قلبی",oblong:"کشیده",diamond:"الماس",triangle:"مثلثی"};
 const SHAPE_EN = {oval:"Oval",round:"Round",square:"Square",heart:"Heart",oblong:"Oblong",diamond:"Diamond",triangle:"Triangle"};
 const LEN_FA = {short:"کوتاه",medium:"متوسط",long:"بلند"};
 const VIBE_FA = {classic:"کلاسیک",modern:"مدرن",edgy:"جسورانه",elegant:"شیک"};
+const FEATURE_FA = {geo:"هندسی",curv:"انحنا",sym:"تقارن",ang:"زاویه"};
+const FEATURE_EN = {geo:"Geo",curv:"Curv",sym:"Sym",ang:"Ang"};
 
 const FALLBACK_IMG = "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop";
 
-/* ==================== HAIRSTYLE DATABASE (MEN ONLY) ==================== */
 const HAIRSTYLES = [
   {id:"ov-1", fa:"تیپر کلاسیک", en:"Classic Taper", len:"short", vibe:"classic", shapes:["oval"], why:"تعادل طبیعی خط فک بیضی را برجسته می‌کند", img:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=200&h=200&fit=crop"},
   {id:"ov-2", fa:"پامپادور", en:"Pompadour", len:"short", vibe:"classic", shapes:["oval"], why:"حجم بالایی ایجاد می‌کند که نسبت طلایی صورت را تقویت می‌کند", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
   {id:"ov-3", fa:"کویف مدرن", en:"Modern Quiff", len:"short", vibe:"modern", shapes:["oval"], why:"حرکت عمودی، طول صورت بیضی را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
   {id:"ov-4", fa:"فرق کناری", en:"Side Part", len:"short", vibe:"classic", shapes:["oval"], why:"خط فرق، تقارن طبیعی صورت را برجسته می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
-  {id:"ov-5", fa:"اسلیک بک", en:"Slick Back", len:"short", vibe:"elegant", shapes:["oval"], why:"ظاهری رسمی و شیک برای فرم‌های متعادل", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"ov-5", fa:"اسلیک بک", en:"Slick Back", len:"short", vibe:"elegant", shapes:["oval"], why:"ظاهری رسمی و شیک برای فرم‌های متعادل", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop", childOK:false},
   {id:"ov-6", fa:"باز فید", en:"Buzz Cut", len:"short", vibe:"edgy", shapes:["oval"], why:"مینیمالیسم جسورانه، فرم متعادل بیضی را نمایش می‌دهد", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
 
   {id:"rd-1", fa:"فید بلند", en:"High Fade", len:"short", vibe:"modern", shapes:["round"], why:"کناره‌های کوتاه، عرض صورت را کاهش می‌دهد", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
@@ -481,7 +667,7 @@ const HAIRSTYLES = [
   {id:"sq-2", fa:"کویف بافت", en:"Textured Quiff", len:"short", vibe:"modern", shapes:["square"], why:"بافت بالا، تعادل با فک قوی ایجاد می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
   {id:"sq-3", fa:"فید پایین", en:"Low Fade", len:"short", vibe:"modern", shapes:["square"], why:"انتقال تدریجی، خط فک قوی را نرم می‌کند", img:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=200&fit=crop"},
   {id:"sq-4", fa:"کرو کات", en:"Crew Cut", len:"short", vibe:"classic", shapes:["square"], why:"مینیمال و متقارن، قدرت فک را برجسته می‌کند", img:"https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=200&h=200&fit=crop"},
-  {id:"sq-5", fa:"من بان", en:"Man Bun", len:"long", vibe:"edgy", shapes:["square"], why:"جمع‌کردن مو، خط فک را آزاد و برجسته می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"},
+  {id:"sq-5", fa:"من بان", en:"Man Bun", len:"long", vibe:"edgy", shapes:["square"], why:"جمع‌کردن مو، خط فک را آزاد و برجسته می‌کند", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop", childOK:false},
 
   {id:"he-1", fa:"فرق متوسط", en:"Medium Side Part", len:"medium", vibe:"classic", shapes:["heart"], why:"حجم کناری، تعادل با پیشانی پهن ایجاد می‌کند", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop"},
   {id:"he-2", fa:"موی پرده‌ای", en:"Curtain Men", len:"medium", vibe:"modern", shapes:["heart"], why:"پوشش کناری پیشانی، عرض آن را متعادل می‌کند", img:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=200&h=200&fit=crop"},
@@ -510,7 +696,6 @@ const HAIRSTYLES = [
   {id:"ms-3", fa:"پامپ کلاسیک", en:"Classic Pomp", len:"short", vibe:"classic", shapes:["oval","square","heart"], why:"حجم متعادل، مناسب فرم‌های با پیشانی برجسته", img:"https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop"},
 ];
 
-/* ==================== QUANTUM TARGETS ==================== */
 const QUANTUM_TARGETS = {
   oval:{geo:[1.45,1.12,1.15,1.05],curv:[0.55,0.60,0.50],sym:[0.02,0.05],ang:[0.55,0.60]},
   round:{geo:[1.10,1.00,1.05,1.25],curv:[0.85,0.70,0.65],sym:[0.03,0.03],ang:[0.70,0.75]},
@@ -525,13 +710,10 @@ const OBSERVER_WEIGHTS = {geo:0.42,curv:0.24,sym:0.14,ang:0.20};
 const OBSERVER_PHASES = {geo:0.0,curv:Math.PI/3,sym:2*Math.PI/3,ang:Math.PI};
 const SHAPES = ["oval","round","square","heart","oblong","diamond","triangle"];
 const SHAPE_PRIOR = [0.22,0.18,0.16,0.12,0.10,0.12,0.10];
-
-const ENTANGLE = {
-  'curv|geo':0.35, 'geo|sym':0.15, 'ang|geo':0.25,
-  'curv|sym':0.12, 'ang|curv':0.18, 'ang|sym':0.10
-};
+const ENTANGLE = {'curv|geo':0.35,'geo|sym':0.15,'ang|geo':0.25,'curv|sym':0.12,'ang|curv':0.18,'ang|sym':0.10};
 const DECOHERENCE = 0.018;
 const EVOLUTION_TIME = 1.0;
+const DECOHERENCE_GAMMA = 0.14;
 
 const dist = (a,b) => Math.hypot(a.x-b.x, a.y-b.y);
 const angle = (a,b,c) => {
@@ -542,28 +724,450 @@ const angle = (a,b,c) => {
 };
 const clip = (v,min,max) => Math.max(min,Math.min(max,v));
 
-let toastTimer;
-function toast(msg, ms=2200) {
-  els.toast.textContent = msg;
-  els.toast.classList.add("is-visible");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => els.toast.classList.remove("is-visible"), ms);
+function estimateAge(landmarks) {
+  const d = (i,j) => dist(landmarks[i], landmarks[j]);
+  const I = {FOREHEAD_TOP: 10, NASION: 168, CHIN: 152, CHEEK_L: 234, CHEEK_R: 454, EYE_OUT_L: 33, EYE_IN_L: 133, EYE_IN_R: 362, EYE_OUT_R: 263, NOSE_BOTTOM: 2};
+  const faceLen  = d(I.FOREHEAD_TOP, I.CHIN);
+  const faceW    = d(I.CHEEK_L, I.CHEEK_R);
+  const upperFace= d(I.FOREHEAD_TOP, I.NASION);
+  const lowerFace= d(I.NASION, I.CHIN);
+  const eyeW     = (d(I.EYE_OUT_L, I.EYE_IN_L) + d(I.EYE_IN_R, I.EYE_OUT_R)) / 2;
+  const noseLen  = d(I.NASION, I.NOSE_BOTTOM);
+  const eps = 1e-6;
+  const upperRatio = upperFace / (faceLen + eps);
+  const eyeRatio   = eyeW / (faceW + eps);
+  const noseRatio  = noseLen / (faceLen + eps);
+  const aspect     = faceLen / (faceW + eps);
+  const sUpper  = clip((upperRatio - 0.355) / 0.085, 0, 1);
+  const sEye    = clip((eyeRatio   - 0.115) / 0.060, 0, 1);
+  const sNose   = clip((0.220 - noseRatio) / 0.080, 0, 1);
+  const sAspect = clip((1.450 - aspect)    / 0.200, 0, 1);
+  const childScore = sUpper*0.25 + sEye*0.30 + sNose*0.20 + sAspect*0.25;
+  let group, groupFa, confidence;
+  if (childScore > 0.62) {
+    group = "child"; groupFa = "کودک";
+    confidence = clip(0.55 + (childScore - 0.62) * 1.6, 0.55, 0.98);
+  } else if (childScore > 0.38) {
+    group = "teen"; groupFa = "نوجوان";
+    confidence = clip(1 - Math.abs(childScore - 0.50) / 0.12, 0.45, 0.95);
+  } else {
+    group = "adult"; groupFa = "بزرگسال";
+    confidence = clip(0.55 + (0.38 - childScore) * 1.6, 0.55, 0.98);
+  }
+  return {
+    group, groupFa, confidence, childScore,
+    metrics: {
+      "پیشانی (بالا/کل)": (upperRatio * 100).toFixed(1) + "٪",
+      "چشم (عرض/صورت)":  (eyeRatio * 100).toFixed(1) + "٪",
+      "بینی (طول/کل)":    (noseRatio * 100).toFixed(1) + "٪",
+      "طول/عرض صورت":     aspect.toFixed(2)
+    }
+  };
 }
 
-/* ─── Theme (dark default) ─── */
-const savedTheme = localStorage.getItem("headline_theme") || "dark";
-if (savedTheme === "dark") {
-  document.documentElement.setAttribute("data-theme","dark");
-  els.themeToggle.textContent = "☀️";
-} else {
-  document.documentElement.removeAttribute("data-theme");
-  els.themeToggle.textContent = "🌙";
+function advancedQuantumMetrics(psiR, psiI) {
+  const n = psiR.length;
+  const gamma = DECOHERENCE_GAMMA;
+  const amps = psiR.map((r,i) => ({r, i: psiI[i]}));
+  const rhoR = Array.from({length:n}, () => Array(n).fill(0));
+  const rhoI = Array.from({length:n}, () => Array(n).fill(0));
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      const decay = Math.exp(-gamma * Math.abs(i - j));
+      rhoR[i][j] = (amps[i].r * amps[j].r + amps[i].i * amps[j].i) * decay;
+      rhoI[i][j] = (amps[i].i * amps[j].r - amps[i].r * amps[j].i) * decay;
+    }
+  }
+  let purity = 0;
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) purity += rhoR[i][j]**2 + rhoI[i][j]**2;
+  const linearEnt = clip(1 - purity, 0, 1);
+  let coherence = 0;
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) if (i !== j) coherence += Math.hypot(rhoR[i][j], rhoI[i][j]);
+  const diag = rhoR.map((row, i) => row[i]);
+  const diagSum = diag.reduce((a,b)=>a+b, 0) || 1;
+  let vnEnt = 0;
+  for (let i = 0; i < n; i++) { const p = diag[i] / diagSum; if (p > 1e-12) vnEnt -= p * Math.log(p); }
+  vnEnt /= Math.log(n);
+  const diagMax = Math.max(...diag) || 1e-9;
+  const offMag = Math.hypot(rhoR[0][1], rhoI[0][1]) + Math.hypot(rhoR[1][0], rhoI[1][0]);
+  const ratio = Math.max(offMag / (2 * diagMax + 1e-9), 1e-9);
+  const decoherenceTime = clip(-1 / Math.log(ratio), 0, 50);
+  return { purity: clip(purity, 0, 1), linearEnt, coherence, vnEnt, decoherenceTime, gamma, rhoR, rhoI };
 }
+
+function analyzeQuantum(landmarks) {
+  const I = {FOREHEAD_TOP:10,CHIN_BOTTOM:152,FOREHEAD_LEFT:54,FOREHEAD_RIGHT:284,
+    ZYGOMATIC_LEFT:234,ZYGOMATIC_RIGHT:454,JAW_LEFT:58,JAW_RIGHT:288,
+    JAW_MID_L:365,JAW_MID_R:136,GONIAL_LEFT:172,GONIAL_RIGHT:397,
+    BROW_LEFT:105,BROW_RIGHT:334,NOSE_TIP:1};
+  const d = (i,j) => dist(landmarks[i],landmarks[j]);
+  const ang = (i,j,k) => angle(landmarks[i],landmarks[j],landmarks[k]);
+  const face_len = d(I.FOREHEAD_TOP,I.CHIN_BOTTOM);
+  const forehead_w = d(I.FOREHEAD_LEFT,I.FOREHEAD_RIGHT);
+  const cheek_w = d(I.ZYGOMATIC_LEFT,I.ZYGOMATIC_RIGHT);
+  const jaw_w = d(I.JAW_LEFT,I.JAW_RIGHT);
+  if (cheek_w < 1e-6 || jaw_w < 1e-6 || forehead_w < 1e-6) return null;
+  const geo = [face_len/cheek_w, forehead_w/jaw_w, cheek_w/forehead_w, (face_len*0.5)/Math.max(jaw_w*0.5,1e-6)];
+  const mid_jaw_y = (landmarks[I.JAW_MID_L].y + landmarks[I.JAW_MID_R].y) * 0.5;
+  const gonial_y = (landmarks[I.GONIAL_LEFT].y + landmarks[I.GONIAL_RIGHT].y) * 0.5;
+  const chin_y = landmarks[I.CHIN_BOTTOM].y;
+  const jaw_round = clip(Math.abs(mid_jaw_y - gonial_y) / (Math.abs(chin_y - gonial_y) + 1e-9), 0, 1);
+  const fore_curve = clip(ang(I.BROW_LEFT, I.FOREHEAD_TOP, I.BROW_RIGHT) / Math.PI, 0, 1);
+  const cheek_prom = clip((cheek_w - 0.5 * (forehead_w + jaw_w)) / (cheek_w + 1e-9) + 0.5, 0, 1);
+  const curv = [jaw_round, fore_curve, cheek_prom];
+  const lr_asym = Math.abs(d(I.ZYGOMATIC_LEFT, I.CHIN_BOTTOM) - d(I.ZYGOMATIC_RIGHT, I.CHIN_BOTTOM)) / (cheek_w + 1e-9);
+  const ul_bal = Math.abs(face_len * 0.5 - d(I.FOREHEAD_TOP, I.NOSE_TIP)) / (face_len + 1e-9);
+  const sym = [clip(lr_asym, 0, 0.2), clip(ul_bal, 0, 0.2)];
+  const chin_ang = ang(I.JAW_LEFT, I.CHIN_BOTTOM, I.JAW_RIGHT) / Math.PI;
+  const cheek_ang = ang(I.ZYGOMATIC_LEFT, I.NOSE_TIP, I.ZYGOMATIC_RIGHT) / Math.PI;
+  const ang_feat = [chin_ang, cheek_ang];
+  const obs = { geo, curv, sym, ang: ang_feat };
+  const F = {}, R = {};
+  for (const name in obs) {
+    F[name] = []; R[name] = [];
+    for (let s = 0; s < SHAPES.length; s++) {
+      const mu = QUANTUM_TARGETS[SHAPES[s]][name];
+      const sigma = QUANTUM_SIGMA[name];
+      let z2 = 0, rSum = 0;
+      for (let i = 0; i < mu.length; i++) { const z = (obs[name][i] - mu[i]) / sigma[i]; z2 += z * z; rSum += z; }
+      F[name].push(Math.exp(-0.5 * z2)); R[name].push(rSum / mu.length);
+    }
+  }
+  const psiR = new Array(SHAPES.length).fill(0);
+  const psiI = new Array(SHAPES.length).fill(0);
+  const featureNames = Object.keys(obs);
+  for (let s = 0; s < SHAPES.length; s++) {
+    for (const name of featureNames) {
+      const w = OBSERVER_WEIGHTS[name];
+      const amp = w * Math.sqrt(F[name][s]);
+      let phase = OBSERVER_PHASES[name] + Math.atan2(R[name][s], 1.0) + EVOLUTION_TIME * 0.1;
+      for (const other of featureNames) {
+        if (other === name) continue;
+        const key = [name, other].sort().join('|');
+        const corr = ENTANGLE[key] || 0;
+        phase += corr * Math.sin(R[other][s]) * 0.5;
+      }
+      psiR[s] += amp * Math.cos(phase); psiI[s] += amp * Math.sin(phase);
+    }
+  }
+  const dec = 1 - DECOHERENCE;
+  for (let s = 0; s < SHAPES.length; s++) { psiR[s] *= dec; psiI[s] *= dec; }
+  let probSum = 0;
+  const prob = [];
+  for (let s = 0; s < SHAPES.length; s++) { const p = psiR[s] ** 2 + psiI[s] ** 2; prob.push(p); probSum += p; }
+  for (let s = 0; s < SHAPES.length; s++) prob[s] /= (probSum + 1e-12);
+  let logSum = 0;
+  const logPost = [];
+  for (let s = 0; s < SHAPES.length; s++) {
+    const lp = Math.log(prob[s] + 1e-12) + 0.12 * Math.log(SHAPE_PRIOR[s] + 1e-12);
+    logPost.push(lp); logSum += Math.exp(lp);
+  }
+  const posterior = logPost.map(lp => Math.exp(lp) / logSum);
+  let topIdx = 0, maxP = 0;
+  for (let s = 0; s < SHAPES.length; s++) if (posterior[s] > maxP) { maxP = posterior[s]; topIdx = s; }
+  let entropy = 0;
+  for (let s = 0; s < SHAPES.length; s++) entropy -= posterior[s] * Math.log(posterior[s] + 1e-12);
+  entropy /= Math.log(SHAPES.length);
+  let coherence_plain = 0;
+  for (let i = 0; i < SHAPES.length; i++) for (let j = i + 1; j < SHAPES.length; j++) coherence_plain += Math.abs(psiR[i] * psiR[j] + psiI[i] * psiI[j]);
+  coherence_plain = clip(coherence_plain / SHAPES.length, 0, 1);
+  const gr = Math.abs(face_len / cheek_w - 1.618);
+  const goldenScore = Math.exp(-gr * 2.5);
+  const symmetryScore = 1 - clip(lr_asym * 2, 0, 1) * 0.7 - clip(ul_bal * 1.5, 0, 1) * 0.3;
+  let topFeature = "geo", topContribution = 0;
+  const contrib = {};
+  for (const name of featureNames) {
+    const c = F[name][topIdx] * OBSERVER_WEIGHTS[name];
+    contrib[name] = c;
+    if (c > topContribution) { topContribution = c; topFeature = name; }
+  }
+  const age = estimateAge(landmarks);
+  const adv = advancedQuantumMetrics(psiR, psiI);
+  return { shape: SHAPES[topIdx], confidence: posterior[topIdx], entropy, coherence: coherence_plain, goldenScore, symmetryScore, posterior, prob, psiR, psiI, topFeature: FEATURE_FA[topFeature], landmarks, age, adv };
+}
+
+function drawFaceMesh(canvas, imgEl, landmarks) {
+  const w = canvas.clientWidth || imgEl.clientWidth;
+  const h = canvas.clientHeight || imgEl.clientHeight;
+  if (w === 0 || h === 0) return;
+  canvas.width = w * window.devicePixelRatio;
+  canvas.height = h * window.devicePixelRatio;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  const connections = [
+    [10,338],[338,297],[297,332],[332,284],[284,251],[251,301],[301,293],[293,298],
+    [298,296],[296,336],[336,285],[285,295],[295,282],[282,283],[283,276],[276,250],
+    [250,290],[290,305],[305,307],[307,306],[306,408],[408,304],[304,303],[303,302],
+    [302,310],[310,311],[311,312],[312,13],[13,82],[82,81],[81,80],[80,191],
+    [191,78],[78,62],[62,76],[76,77],[77,72],[72,11],[11,37],[37,0],
+    [0,267],[267,269],[269,270],[270,409],[409,291],[291,375],[375,321],[321,405],
+    [405,314],[314,17],[17,84],[84,181],[181,91],[91,146],[146,61],[61,185],
+    [185,40],[40,39],[39,156],[156,70],[70,63],[63,105],[105,66],[66,107],
+    [33,7],[7,163],[163,144],[144,145],[145,153],[153,154],[154,155],[155,133],
+    [133,33],[246,161],[161,160],[160,159],[159,158],[158,157],[157,173],[173,133],
+    [133,155],[362,263],[263,249],[249,390],[390,373],[373,374],[374,380],[380,381],
+    [381,382],[382,362],[466,388],[388,387],[387,386],[386,385],[385,384],[384,398],[398,362],
+    [168,6],[6,197],[197,195],[195,5],[5,4],[4,1],[1,2],[2,164],[164,167],
+    [167,165],[165,3],[3,51],[51,45],[45,220],[220,115],[115,131],
+    [131,134],[134,236],[236,198],[198,217],[217,126],[126,142],
+    [142,36],[36,100],[100,47],[47,114],[114,128],[128,216],
+  ];
+  ctx.strokeStyle = "rgba(124, 58, 237, 0.55)";
+  ctx.lineWidth = 1;
+  for (const [a, b] of connections) {
+    const pa = landmarks[a], pb = landmarks[b];
+    if (!pa || !pb) continue;
+    ctx.beginPath(); ctx.moveTo(pa.x * w, pa.y * h); ctx.lineTo(pb.x * w, pb.y * h); ctx.stroke();
+  }
+  const keyPoints = [10,152,54,284,234,454,58,288,172,397,105,334,1,33,263,61,291,13,14];
+  ctx.fillStyle = "rgba(124, 58, 237, 0.9)";
+  for (const idx of keyPoints) {
+    const p = landmarks[idx];
+    if (!p) continue;
+    ctx.beginPath(); ctx.arc(p.x * w, p.y * h, 2.5, 0, Math.PI * 2); ctx.fill();
+  }
+}
+
+async function startCamera() {
+  try {
+    cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 720 } } });
+    els.video.srcObject = cameraStream;
+    els.cameraView.classList.add("is-visible");
+    document.querySelector("#step-upload .instruction").style.display = "none";
+    els.preview.classList.remove("is-visible");
+    document.querySelector("#step-upload .actions").style.display = "none";
+  } catch (err) {
+    toast("دسترسی به دوربین امکان‌پذیر نیست. لطفا از گالری استفاده کنید.");
+    console.error(err);
+  }
+}
+
+function stopCamera() {
+  if (cameraStream) { cameraStream.getTracks().forEach(track => track.stop()); cameraStream = null; }
+  els.cameraView.classList.remove("is-visible");
+  document.querySelector("#step-upload .instruction").style.display = "block";
+  document.querySelector("#step-upload .actions").style.display = "flex";
+}
+
+function capturePhoto() {
+  if (!cameraStream) return;
+  const canvas = document.createElement("canvas");
+  canvas.width = els.video.videoWidth; canvas.height = els.video.videoHeight;
+  canvas.getContext("2d").drawImage(els.video, 0, 0, canvas.width, canvas.height);
+  canvas.toBlob((blob) => {
+    if (blob) { const file = new File([blob], "camera-capture.jpg", { type: "image/jpeg" }); stopCamera(); setFile(file); }
+  }, "image/jpeg", 0.9);
+}
+
+els.btnStartCamera.addEventListener("click", startCamera);
+els.btnCancelCam.addEventListener("click", stopCamera);
+els.btnCapture.addEventListener("click", capturePhoto);
+
+async function setFile(f) {
+  if (!f) return;
+  els.errorBox.classList.remove("is-visible", "alert--warn");
+  els.loading.style.display = "none";
+  els.previewBadge.hidden = true;
+  els.analyzeBtn.disabled = true;
+  els.analyzeBtn.textContent = "⏳ در حال آماده‌سازی...";
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = async () => {
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      objectUrl = URL.createObjectURL(f);
+      lastImageEl = img;
+      els.previewImg.src = objectUrl;
+      els.preview.classList.add("is-visible");
+      els.meshCanvas.width = 0; els.meshCanvas.height = 0;
+      els.analyzeBtn.disabled = false;
+      els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره + سن";
+      setTimeout(() => runAnalysis(img), 250);
+    };
+    img.src = e.target.result;
+  };
+  reader.onerror = () => toast("خطا در خواندن فایل");
+  reader.readAsDataURL(f);
+}
+
+async function runAnalysis(imgElement) {
+  if (!imgElement) return;
+  els.upload.style.display = "none";
+  els.loading.style.display = "block";
+  els.progressFill.style.width = "10%";
+  try {
+    if (!faceLandmarker) await ensureModel();
+    els.loadingText.textContent = "⚛ در حال استخراج ۴۷۸ نقطه چهره...";
+    els.progressFill.style.width = "45%";
+    await new Promise(r => setTimeout(r, 120));
+    const canvas = document.createElement("canvas");
+    let w = imgElement.naturalWidth || imgElement.width;
+    let h = imgElement.naturalHeight || imgElement.height;
+    const maxSide = 800;
+    if (w > maxSide) { h *= maxSide / w; w = maxSide; }
+    if (h > maxSide) { w *= maxSide / h; h = maxSide; }
+    canvas.width = w; canvas.height = h;
+    canvas.getContext("2d").drawImage(imgElement, 0, 0, w, h);
+    const bitmap = await createImageBitmap(canvas);
+    const results = faceLandmarker.detect(bitmap);
+    if (!results.faceLandmarks || results.faceLandmarks.length === 0) throw new Error("چهره‌ای در عکس پیدا نشد. لطفاً عکس واضح‌تری انتخاب کنید.");
+    els.progressFill.style.width = "65%";
+    els.loadingText.textContent = "⚛ تخمین گروه سنی از نسبت‌های آنتروپومتریک...";
+    await new Promise(r => setTimeout(r, 200));
+    els.progressFill.style.width = "80%";
+    els.loadingText.textContent = "⚛ درهم‌تنیدگی و محاسبه تابع موج + ماتریس چگالی...";
+    await new Promise(r => setTimeout(r, 250));
+    const landmarks = results.faceLandmarks[0];
+    const analysis = analyzeQuantum(landmarks);
+    if (!analysis) throw new Error("محاسبه ویژگی‌های صورت ناموفق بود.");
+    const tilt = Math.abs(Math.atan2(landmarks[152].x - landmarks[10].x, landmarks[152].y - landmarks[10].y));
+    if (tilt > 0.35) { els.errorBox.textContent = "⚠️ هشدار: سر شما کج است — نتایج ممکن است دقت کمتری داشته باشند."; els.errorBox.classList.add("alert--warn","is-visible"); }
+    let suitableStyles = HAIRSTYLES.filter(s => s.shapes.includes(analysis.shape));
+    if (analysis.age.group === "child") suitableStyles = suitableStyles.filter(s => s.childOK !== false);
+    lastResult = { analysis, styles: suitableStyles };
+    els.progressFill.style.width = "100%";
+    els.loadingText.textContent = "⚛ تحلیل کامل شد — فروریزش تابع موج ✓";
+    await new Promise(r => setTimeout(r, 300));
+    drawFaceMesh(els.meshCanvas, imgElement, landmarks);
+    els.previewBadge.hidden = false;
+    renderResults();
+    if (navigator.vibrate) navigator.vibrate([20, 50, 20]);
+  } catch (err) {
+    console.error(err);
+    els.upload.style.display = "block";
+    els.loading.style.display = "none";
+    els.analyzeBtn.disabled = false;
+    els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره + سن";
+    els.errorBox.textContent = "⚠️ خطا: " + (err.message || err);
+    els.errorBox.classList.add("alert--error","is-visible");
+    toast("تحلیل ناموفق بود — دوباره تلاش کنید");
+  }
+}
+
+function renderResults() {
+  const { analysis, styles } = lastResult;
+  const shapeFa = SHAPE_FA[analysis.shape];
+  const shapeEn = SHAPE_EN[analysis.shape];
+  const pct = Math.round(analysis.confidence * 100);
+  const age = analysis.age;
+  const adv = analysis.adv;
+  const ageIcon = age.group === "child" ? "🧒" : age.group === "teen" ? "🧑" : "👨";
+  const ageMetricsHTML = `<div class="age-metrics">${Object.entries(age.metrics).map(([k,v]) => `<div class="age-metrics__item"><span class="age-metrics__lbl">${k}</span><span class="age-metrics__val">${v}</span></div>`).join("")}</div>`;
+  const ageWarning = age.group === "child" ? `<div class="age-warning age-warning--child">👶 استایل‌های سبک و کم‌نگهداری که برای کودکان مناسب‌تر هستند نمایش داده شده‌اند.</div>` : age.group === "teen" ? `<div class="age-warning age-warning--teen">🧑 استایل‌های متناسب با گروه سنی نوجوان — قابل تنظیم برای مدرسه و بیرون.</div>` : "";
+
+  els.resultHeader.innerHTML = `
+    <div class="age-badge-wrap"><div class="age-badge age-badge--${age.group}"><span class="age-badge__icon">${ageIcon}</span><span>${age.groupFa}</span><span class="age-badge__conf">${Math.round(age.confidence * 100)}٪ اطمینان</span></div></div>
+    ${ageMetricsHTML}
+    <div class="result__shape">
+      <span class="result__shape-label">⚛ فرم صورت شما (پس از فروریزش تابع موج)</span>
+      <span class="result__shape-value">${shapeFa}</span>
+      <span class="result__shape-en">${shapeEn}</span>
+    </div>
+    <div class="conf"><span class="conf__bar"><span class="conf__fill" id="conf-fill" style="width:0%"></span></span><span class="conf__pct">${pct}% اطمینان</span></div>
+    <div class="prob-chart">
+      <div class="prob-chart__title">توزیع احتمال کوانتومی فرم‌ها</div>
+      ${SHAPES.map((s, i) => `<div class="prob-row ${i === SHAPES.indexOf(analysis.shape) ? 'prob-row--top' : ''}"><span class="prob-label">${SHAPE_FA[s]}</span><div class="prob-bar"><div class="prob-fill" data-pct="${(analysis.posterior[i] * 100).toFixed(1)}"></div></div><span class="prob-pct">${(analysis.posterior[i] * 100).toFixed(1)}%</span></div>`).join("")}
+    </div>
+    ${ageWarning}
+  `;
+
+  const entropyPct = Math.round(analysis.entropy * 100);
+  const cohPct = Math.round(analysis.coherence * 100);
+  const goldPct = Math.round(analysis.goldenScore * 100);
+  const symPct = Math.round(analysis.symmetryScore * 100);
+  const entropyLabel = analysis.entropy < 0.4 ? "قطعی" : analysis.entropy < 0.7 ? "متوسط" : "نامطمئن";
+
+  const stateViz = `<div class="sv-viz">${SHAPES.map((s, i) => { const h = Math.max(4, Math.sqrt(analysis.posterior[i]) * 100); const hue = i * 48; return `<div class="sv-col"><div class="sv-bar"><div class="sv-bar__fill" style="height:${h}%;background:linear-gradient(180deg,hsl(${hue},80%,60%),hsl(${hue},70%,42%));color:hsl(${hue},80%,60%)"></div></div><span class="sv-val">${(analysis.posterior[i]*100).toFixed(0)}%</span><span class="sv-label">${SHAPE_FA[s].slice(0,4)}</span></div>`; }).join("")}</div>`;
+
+  const features = ["geo","curv","sym","ang"];
+  const emGrid = `<div class="em-grid"><div class="em-cell em-header em-corner"></div>${features.map(f => `<div class="em-cell em-header">${FEATURE_EN[f]}</div>`).join("")}${features.map((f, i) => `<div class="em-cell em-header">${FEATURE_EN[f]}</div>` + features.map((_, j) => { if (i === j) return `<div class="em-cell" style="background:hsl(265,70%,55%)">1.0</div>`; const key = [features[i],features[j]].sort().join('|'); const v = ENTANGLE[key] || 0; const alpha = 0.15 + v * 2.2; const bg = v > 0.2 ? `rgba(124,58,237,${Math.min(alpha,0.95)})` : `rgba(184,147,90,${Math.min(alpha,0.95)})`; return `<div class="em-cell" style="background:${bg}" title="${v.toFixed(3)}">${v.toFixed(2)}</div>`; }).join("")).join("")}</div><div class="em-legend"><span>ضعیف</span><span>قوی</span></div>`;
+
+  els.quantumPanel.innerHTML = `
+    <div class="quantum-box">
+      <div class="quantum-box__title">پارامترهای حالت کوانتومی پیشرفته</div>
+      <div class="quantum-metrics">
+        <div class="qm"><span class="qm__label">آنتروپی پستریور</span><span class="qm__val qm__val--qu">${entropyPct}% · ${entropyLabel}</span></div>
+        <div class="qm"><span class="qm__label">همدوسی l1</span><span class="qm__val qm__val--qu">${cohPct}%</span></div>
+        <div class="qm"><span class="qm__label">نسبت طلایی</span><span class="qm__val ${goldPct > 70 ? 'qm__val--ok' : 'qm__val--warn'}">${goldPct}%</span></div>
+        <div class="qm"><span class="qm__label">تقارن چهره</span><span class="qm__val ${symPct > 70 ? 'qm__val--ok' : 'qm__val--warn'}">${symPct}%</span></div>
+        <div class="qm"><span class="qm__label">خلوص (Purity)</span><span class="qm__val qm__val--qu">${(adv.purity * 100).toFixed(1)}%</span></div>
+        <div class="qm"><span class="qm__label">آنتروپی خطی</span><span class="qm__val">${(adv.linearEnt * 100).toFixed(1)}%</span></div>
+        <div class="qm"><span class="qm__label">آنتروپی فون‌نویمان</span><span class="qm__val qm__val--qu">${(adv.vnEnt * 100).toFixed(1)}%</span></div>
+        <div class="qm"><span class="qm__label">زمان واهمدوسی</span><span class="qm__val qm__val--warn">${adv.decoherenceTime.toFixed(2)} τ</span></div>
+        <div class="qm" style="grid-column:1/-1"><span class="qm__label">ویژگی تعیین‌کننده</span><span class="qm__val qm__val--qu">${analysis.topFeature}</span></div>
+      </div>
+      <div class="quantum-adv"><div class="quantum-adv__title">📊 بردار حالت |ψ⟩ (احتمال هر فرم)</div>${stateViz}</div>
+      <div class="quantum-adv"><div class="quantum-adv__title">🔗 ماتریس درهم‌تنیدگی فیچرها</div>${emGrid}</div>
+    </div>
+  `;
+
+  renderStyles(styles);
+  els.loading.style.display = "none";
+  els.result.classList.add("is-visible");
+  requestAnimationFrame(() => {
+    const cf = $("conf-fill");
+    if (cf) cf.style.width = pct + "%";
+    document.querySelectorAll(".prob-fill[data-pct]").forEach((el, i) => { setTimeout(() => { el.style.width = el.dataset.pct + "%"; }, 100 + i * 60); });
+  });
+}
+
+function renderStyles(styles) {
+  const filtered = styles.filter(s => { if (prefs.length !== "all" && s.len !== prefs.length) return false; if (prefs.vibe !== "all" && s.vibe !== prefs.vibe) return false; return true; });
+  els.styleCount.textContent = `${filtered.length} مدل پیشنهادی`;
+  if (filtered.length === 0) { els.stylesList.innerHTML = `<div class="empty">با این فیلترها مدلی پیدا نشد. فیلترها را تغییر دهید.</div>`; return; }
+  let favorites = [];
+  try { favorites = JSON.parse(localStorage.getItem("headline_favs") || "[]"); } catch(e) { favorites = []; }
+  els.stylesList.innerHTML = filtered.map((s, i) => {
+    const searchQuery = "men's " + s.en + " haircut";
+    const imgLink = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(searchQuery)}`;
+    return `<div class="style-card" style="animation-delay:${i * 45}ms"><img src="${s.img || FALLBACK_IMG}" alt="${s.fa}" class="style-img" onerror="this.src='${FALLBACK_IMG}'"><div class="style-body"><strong class="style-title">${s.fa}<span class="style-title-en">${s.en}</span></strong><p class="style-why">⚛ ${s.why}</p><div class="style-tags"><span class="tag">${LEN_FA[s.len]}</span><span class="tag">${VIBE_FA[s.vibe]}</span><a href="${imgLink}" target="_blank" rel="noopener" class="tag tag--img">🔍 دیدن عکس</a><button class="tag tag--fav ${favorites.includes(s.id) ? 'is-active' : ''}" data-fav="${s.id}" type="button" aria-label="ذخیره">${favorites.includes(s.id) ? '★' : '☆'} ذخیره</button></div></div></div>`;
+  }).join("");
+  els.stylesList.querySelectorAll("[data-fav]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.fav;
+      let favs = [];
+      try { favs = JSON.parse(localStorage.getItem("headline_favs") || "[]"); } catch(e) {}
+      const idx = favs.indexOf(id);
+      if (idx >= 0) { favs.splice(idx, 1); btn.classList.remove("is-active"); btn.innerHTML = "☆ ذخیره"; }
+      else { favs.push(id); btn.classList.add("is-active"); btn.innerHTML = "★ ذخیره شد"; toast("به علاقه‌مندی‌ها اضافه شد"); }
+      try { localStorage.setItem("headline_favs", JSON.stringify(favs)); } catch(e) {}
+    });
+  });
+}
+
+els.galleryInput.addEventListener("change", e => setFile(e.target.files?.[0]));
+els.removeBtn.addEventListener("click", () => { els.preview.classList.remove("is-visible"); els.previewImg.src = ""; els.meshCanvas.width = 0; els.meshCanvas.height = 0; els.previewBadge.hidden = true; els.analyzeBtn.disabled = true; els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره + سن"; if (objectUrl) { URL.revokeObjectURL(objectUrl); objectUrl = null; } lastImageEl = null; });
+els.analyzeBtn.addEventListener("click", () => { if (lastImageEl) runAnalysis(lastImageEl); else if (els.previewImg.src && els.previewImg.complete) runAnalysis(els.previewImg); });
+els.restartBtn.addEventListener("click", () => { els.result.classList.remove("is-visible"); els.upload.style.display = "block"; els.preview.classList.remove("is-visible"); els.previewImg.src = ""; els.meshCanvas.width = 0; els.meshCanvas.height = 0; els.previewBadge.hidden = true; els.loading.style.display = "none"; els.errorBox.classList.remove("is-visible","alert--warn","alert--error"); els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره + سن"; els.analyzeBtn.disabled = true; els.progressFill.style.width = "0%"; lastResult = null; lastImageEl = null; if (objectUrl) { URL.revokeObjectURL(objectUrl); objectUrl = null; } els.galleryInput.value = ""; });
+
+els.shareBtn.addEventListener("click", async () => {
+  if (!lastResult) return;
+  const { analysis, styles } = lastResult;
+  const age = analysis.age;
+  const text = `⚛ نتیجه تحلیل فوق‌کوانتومی هد لاین v3.0:\n\n👤 گروه سنی: ${age.groupFa} (${Math.round(age.confidence*100)}٪ اطمینان)\n📐 فرم صورت: ${SHAPE_FA[analysis.shape]} (${SHAPE_EN[analysis.shape]})\n🎯 اطمینان: ${Math.round(analysis.confidence * 100)}%\n✨ نسبت طلایی: ${Math.round(analysis.goldenScore * 100)}%\n🔬 Purity: ${(analysis.adv.purity*100).toFixed(1)}% · vN-Entropy: ${(analysis.adv.vnEnt*100).toFixed(1)}%\n\nمدل‌های پیشنهادی:\n${styles.slice(0, 5).map((s, i) => `${i + 1}. ${s.fa} (${s.en})`).join("\n")}\n\n— Headline Pro Quantum v3.0`;
+  if (navigator.share) { try { await navigator.share({ title: "هد لاین — تحلیل فوق‌کوانتومی", text }); return; } catch {} }
+  try { await navigator.clipboard.writeText(text); toast("نتیجه در کلیپ‌بورد کپی شد ✓"); } catch { toast("اشتراک‌گذاری پشتیبانی نمی‌شود"); }
+});
+
+els.prefs.querySelectorAll(".chips").forEach(chipsEl => {
+  const key = chipsEl.dataset.pref;
+  chipsEl.addEventListener("click", e => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    chipsEl.querySelectorAll(".chip").forEach(c => c.classList.remove("chip--active"));
+    btn.classList.add("chip--active");
+    prefs[key] = btn.dataset.val;
+    if (lastResult) renderStyles(lastResult.styles);
+  });
+});
+
+const savedTheme = localStorage.getItem("headline_theme") || "light";
+if (savedTheme === "dark") { document.documentElement.setAttribute("data-theme","dark"); els.themeToggle.textContent = "☀️"; }
+else { document.documentElement.setAttribute("data-theme","light"); els.themeToggle.textContent = "🌙"; }
 els.themeToggle.addEventListener("click", () => {
   const cur = document.documentElement.getAttribute("data-theme");
   const next = cur === "dark" ? "light" : "dark";
-  if (next === "dark") document.documentElement.setAttribute("data-theme","dark");
-  else document.documentElement.setAttribute("data-theme", "light"); // اصلاح شد
+  document.documentElement.setAttribute("data-theme", next);
   els.themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
   localStorage.setItem("headline_theme", next);
 });
@@ -583,487 +1187,30 @@ async function initFaceLandmarker() {
   els.progressFill.style.width = "20%";
   const filesetResolver = await FilesetResolver.forVisionTasks(WASM_URL);
   els.progressFill.style.width = "50%";
-
   const baseOptions = { modelAssetPath: MODEL_URL, delegate: "GPU" };
   try {
-    faceLandmarker = await FaceLandmarker.createFromOptions(filesetResolver, {
-      baseOptions, outputFaceBlendshapes: false, runningMode: "IMAGE", numFaces: 1
-    });
+    faceLandmarker = await FaceLandmarker.createFromOptions(filesetResolver, { baseOptions, outputFaceBlendshapes: false, runningMode: "IMAGE", numFaces: 1 });
   } catch (e) {
     console.warn("GPU failed, trying CPU...", e);
     try {
-      faceLandmarker = await FaceLandmarker.createFromOptions(filesetResolver, {
-        baseOptions: { modelAssetPath: MODEL_URL, delegate: "CPU" },
-        outputFaceBlendshapes: false, runningMode: "IMAGE", numFaces: 1
-      });
-    } catch (e2) {
-      console.error("CPU failed too.", e2);
-      throw new Error("خطا در دانلود مدل هوش مصنوعی. لطفا از VPN استفاده کنید یا اتصال اینترنت خود را بررسی کنید.");
-    }
+      faceLandmarker = await FaceLandmarker.createFromOptions(filesetResolver, { baseOptions: { modelAssetPath: MODEL_URL, delegate: "CPU" }, outputFaceBlendshapes: false, runningMode: "IMAGE", numFaces: 1 });
+    } catch (e2) { console.error("CPU failed too.", e2); throw new Error("خطا در دانلود مدل هوش مصنوعی. لطفا از VPN استفاده کنید یا اتصال اینترنت خود را بررسی کنید."); }
   }
   els.progressFill.style.width = "100%";
   els.loadingText.textContent = "آماده است!";
 }
 
-function analyzeQuantum(landmarks) {
-  const I = {FOREHEAD_TOP:10,CHIN_BOTTOM:152,FOREHEAD_LEFT:54,FOREHEAD_RIGHT:284,
-    ZYGOMATIC_LEFT:234,ZYGOMATIC_RIGHT:454,JAW_LEFT:58,JAW_RIGHT:288,
-    JAW_MID_L:365,JAW_MID_R:136,GONIAL_LEFT:172,GONIAL_RIGHT:397,
-    BROW_LEFT:105,BROW_RIGHT:334,NOSE_TIP:1};
-  const d = (i,j) => dist(landmarks[i],landmarks[j]);
-  const ang = (i,j,k) => angle(landmarks[i],landmarks[j],landmarks[k]);
-
-  const face_len = d(I.FOREHEAD_TOP,I.CHIN_BOTTOM);
-  const forehead_w = d(I.FOREHEAD_LEFT,I.FOREHEAD_RIGHT);
-  const cheek_w = d(I.ZYGOMATIC_LEFT,I.ZYGOMATIC_RIGHT);
-  const jaw_w = d(I.JAW_LEFT,I.JAW_RIGHT);
-  if (cheek_w < 1e-6 || jaw_w < 1e-6 || forehead_w < 1e-6) return null;
-
-  const geo = [face_len/cheek_w, forehead_w/jaw_w, cheek_w/forehead_w, (face_len*0.5)/Math.max(jaw_w*0.5,1e-6)];
-
-  const mid_jaw_y = (landmarks[I.JAW_MID_L].y + landmarks[I.JAW_MID_R].y) * 0.5;
-  const gonial_y = (landmarks[I.GONIAL_LEFT].y + landmarks[I.GONIAL_RIGHT].y) * 0.5;
-  const chin_y = landmarks[I.CHIN_BOTTOM].y;
-  const jaw_round = clip(Math.abs(mid_jaw_y - gonial_y) / (Math.abs(chin_y - gonial_y) + 1e-9), 0, 1);
-  const fore_curve = clip(ang(I.BROW_LEFT, I.FOREHEAD_TOP, I.BROW_RIGHT) / Math.PI, 0, 1);
-  const cheek_prom = clip((cheek_w - 0.5 * (forehead_w + jaw_w)) / (cheek_w + 1e-9) + 0.5, 0, 1);
-  const curv = [jaw_round, fore_curve, cheek_prom];
-
-  const lr_asym = Math.abs(d(I.ZYGOMATIC_LEFT, I.CHIN_BOTTOM) - d(I.ZYGOMATIC_RIGHT, I.CHIN_BOTTOM)) / (cheek_w + 1e-9);
-  const ul_bal = Math.abs(face_len * 0.5 - d(I.FOREHEAD_TOP, I.NOSE_TIP)) / (face_len + 1e-9);
-  const sym = [clip(lr_asym, 0, 0.2), clip(ul_bal, 0, 0.2)];
-
-  const chin_ang = ang(I.JAW_LEFT, I.CHIN_BOTTOM, I.JAW_RIGHT) / Math.PI;
-  const cheek_ang = ang(I.ZYGOMATIC_LEFT, I.NOSE_TIP, I.ZYGOMATIC_RIGHT) / Math.PI;
-  const ang_feat = [chin_ang, cheek_ang];
-
-  const obs = { geo, curv, sym, ang: ang_feat };
-
-  const F = {}, R = {};
-  for (const name in obs) {
-    F[name] = []; R[name] = [];
-    for (let s = 0; s < SHAPES.length; s++) {
-      const mu = QUANTUM_TARGETS[SHAPES[s]][name];
-      const sigma = QUANTUM_SIGMA[name];
-      let z2 = 0, rSum = 0;
-      for (let i = 0; i < mu.length; i++) {
-        const z = (obs[name][i] - mu[i]) / sigma[i];
-        z2 += z * z; rSum += z;
-      }
-      F[name].push(Math.exp(-0.5 * z2));
-      R[name].push(rSum / mu.length);
-    }
-  }
-
-  const psiR = new Array(SHAPES.length).fill(0);
-  const psiI = new Array(SHAPES.length).fill(0);
-  const featureNames = Object.keys(obs);
-
-  for (let s = 0; s < SHAPES.length; s++) {
-    for (const name of featureNames) {
-      const w = OBSERVER_WEIGHTS[name];
-      const amp = w * Math.sqrt(F[name][s]);
-      let phase = OBSERVER_PHASES[name] + Math.atan2(R[name][s], 1.0) + EVOLUTION_TIME * 0.1;
-
-      for (const other of featureNames) {
-        if (other === name) continue;
-        const key = [name, other].sort().join('|');
-        const corr = ENTANGLE[key] || 0;
-        phase += corr * Math.sin(R[other][s]) * 0.5;
-      }
-
-      psiR[s] += amp * Math.cos(phase);
-      psiI[s] += amp * Math.sin(phase);
-    }
-  }
-
-  const dec = 1 - DECOHERENCE;
-  for (let s = 0; s < SHAPES.length; s++) {
-    psiR[s] *= dec;
-    psiI[s] *= dec;
-  }
-
-  let probSum = 0;
-  const prob = [];
-  for (let s = 0; s < SHAPES.length; s++) {
-    const p = psiR[s] ** 2 + psiI[s] ** 2;
-    prob.push(p); probSum += p;
-  }
-  for (let s = 0; s < SHAPES.length; s++) prob[s] /= (probSum + 1e-12);
-
-  let logSum = 0;
-  const logPost = [];
-  for (let s = 0; s < SHAPES.length; s++) {
-    const lp = Math.log(prob[s] + 1e-12) + 0.12 * Math.log(SHAPE_PRIOR[s] + 1e-12);
-    logPost.push(lp); logSum += Math.exp(lp);
-  }
-  const posterior = logPost.map(lp => Math.exp(lp) / logSum);
-
-  let topIdx = 0, maxP = 0;
-  for (let s = 0; s < SHAPES.length; s++) if (posterior[s] > maxP) { maxP = posterior[s]; topIdx = s; }
-
-  let entropy = 0;
-  for (let s = 0; s < SHAPES.length; s++) entropy -= posterior[s] * Math.log(posterior[s] + 1e-12);
-  entropy /= Math.log(SHAPES.length);
-
-  let coherence = 0;
-  for (let i = 0; i < SHAPES.length; i++) {
-    for (let j = i + 1; j < SHAPES.length; j++) {
-      coherence += Math.abs(psiR[i] * psiR[j] + psiI[i] * psiI[j]);
-    }
-  }
-  coherence = clip(coherence / SHAPES.length, 0, 1);
-
-  const gr = Math.abs(face_len / cheek_w - 1.618);
-  const goldenScore = Math.exp(-gr * 2.5);
-
-  const symmetryScore = 1 - clip(lr_asym * 2, 0, 1) * 0.7 - clip(ul_bal * 1.5, 0, 1) * 0.3;
-
-  let topFeature = "geo", topContribution = 0;
-  const contrib = {};
-  for (const name of featureNames) {
-    const c = F[name][topIdx] * OBSERVER_WEIGHTS[name];
-    contrib[name] = c;
-    if (c > topContribution) { topContribution = c; topFeature = name; }
-  }
-  const featureFA = {geo:"تناسبات هندسی", curv:"انحنای خطوط", sym:"تقارن", ang:"زوایای چهره"};
-
-  return {
-    shape: SHAPES[topIdx],
-    confidence: posterior[topIdx],
-    entropy,
-    coherence,
-    goldenScore,
-    symmetryScore,
-    posterior,
-    prob,
-    topFeature: featureFA[topFeature],
-    landmarks: landmarks
-  };
+let toastTimer;
+function toast(msg, ms=2400) {
+  els.toast.textContent = msg;
+  els.toast.classList.add("is-visible");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => els.toast.classList.remove("is-visible"), ms);
 }
 
-function drawFaceMesh(canvas, imgEl, landmarks) {
-  const w = canvas.clientWidth || imgEl.clientWidth;
-  const h = canvas.clientHeight || imgEl.clientHeight;
-  if (w === 0 || h === 0) return;
-
-  canvas.width = w * window.devicePixelRatio;
-  canvas.height = h * window.devicePixelRatio;
-  const ctx = canvas.getContext("2d");
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-
-  const connections = [
-    [10,338],[338,297],[297,332],[332,284],[284,251],[251,301],[301,293],[293,298],
-    [298,296],[296,336],[336,285],[285,295],[295,282],[282,283],[283,276],[276,250],
-    [250,290],[290,305],[305,307],[307,306],[306,408],[408,304],[304,303],[303,302],
-    [302,310],[310,311],[311,312],[312,13],[13,82],[82,81],[81,80],[80,191],
-    [191,78],[78,62],[62,76],[76,77],[77,72],[72,11],[11,37],[37,0],
-    [0,267],[267,269],[269,270],[270,409],[409,291],[291,375],[375,321],[321,405],
-    [405,314],[314,17],[17,84],[84,181],[181,91],[91,146],[146,61],[61,185],
-    [185,40],[40,39],[39,156],[156,70],[70,63],[63,105],[105,66],[66,107],
-    [33,7],[7,163],[163,144],[144,145],[145,153],[153,154],[154,155],[155,133],
-    [133,33],[246,161],[161,160],[160,159],[159,158],[158,157],[157,173],[173,133],
-    [133,155],[362,263],[263,249],[249,390],[390,373],[373,374],[374,380],[380,381],
-    [381,382],[382,362],[466,388],[388,387],[387,386],[386,385],[385,384],[384,398],[398,362],
-    [168,6],[6,197],[197,195],[195,5],[5,4],[4,1],[1,2],[2,164],[164,167],
-    [167,165],[165,3],[3,51],[51,45],[45,220],[220,115],[115,131],
-    [131,134],[134,236],[236,198],[198,217],[217,126],[126,142],
-    [142,36],[36,100],[100,47],[47,114],[114,128],[128,216],
-  ];
-  ctx.strokeStyle = "rgba(124, 95, 211, 0.55)";
-  ctx.lineWidth = 1;
-  for (const [a, b] of connections) {
-    const pa = landmarks[a], pb = landmarks[b];
-    if (!pa || !pb) continue;
-    ctx.beginPath();
-    ctx.moveTo(pa.x * w, pa.y * h);
-    ctx.lineTo(pb.x * w, pb.y * h);
-    ctx.stroke();
-  }
-
-  const keyPoints = [10,152,54,284,234,454,58,288,172,397,105,334,1,33,263,61,291,13,14];
-  ctx.fillStyle = "rgba(124, 95, 211, 0.9)";
-  for (const idx of keyPoints) {
-    const p = landmarks[idx];
-    if (!p) continue;
-    ctx.beginPath();
-    ctx.arc(p.x * w, p.y * h, 2.5, 0, Math.PI * 2);
-    ctx.fill();
-  }
+if (SITE_STATUS === "on") {
+  ensureModel().catch(err => console.warn("Model preload failed:", err));
 }
-
-async function setFile(f) {
-  if (!f) return;
-  els.errorBox.classList.remove("is-visible", "alert--warn");
-  els.loading.style.display = "none";
-  els.previewBadge.hidden = true;
-  els.analyzeBtn.disabled = true;
-  els.analyzeBtn.textContent = "⏳ در حال آماده‌سازی...";
-
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const img = new Image();
-    img.onload = async () => {
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
-      objectUrl = URL.createObjectURL(f);
-      lastImageEl = img;
-      els.previewImg.src = objectUrl;
-      els.preview.classList.add("is-visible");
-      els.meshCanvas.width = 0;
-      els.meshCanvas.height = 0;
-      els.analyzeBtn.disabled = false;
-      els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره";
-      setTimeout(() => runAnalysis(img), 250);
-    };
-    img.src = e.target.result;
-  };
-  reader.onerror = () => toast("خطا در خواندن فایل");
-  reader.readAsDataURL(f);
-}
-
-async function runAnalysis(imgElement) {
-  if (!imgElement) return;
-  els.upload.style.display = "none";
-  els.loading.style.display = "block";
-  els.progressFill.style.width = "10%";
-
-  try {
-    if (!faceLandmarker) await ensureModel();
-    els.loadingText.textContent = "⚛ در حال استخراج ۴۷۸ نقطه چهره...";
-    els.progressFill.style.width = "55%";
-    await new Promise(r => setTimeout(r, 120));
-
-    const canvas = document.createElement("canvas");
-    let w = imgElement.naturalWidth || imgElement.width;
-    let h = imgElement.naturalHeight || imgElement.height;
-    const maxSide = 800;
-    if (w > maxSide) { h *= maxSide / w; w = maxSide; }
-    if (h > maxSide) { w *= maxSide / h; h = maxSide; }
-    canvas.width = w; canvas.height = h;
-    canvas.getContext("2d").drawImage(imgElement, 0, 0, w, h);
-
-    const bitmap = await createImageBitmap(canvas);
-    const results = faceLandmarker.detect(bitmap);
-
-    if (!results.faceLandmarks || results.faceLandmarks.length === 0) {
-      throw new Error("چهره‌ای در عکس پیدا نشد. لطفاً عکس واضح‌تری انتخاب کنید.");
-    }
-    els.progressFill.style.width = "75%";
-    els.loadingText.textContent = "⚛ درهم‌تنیدگی و محاسبه تابع موج...";
-    await new Promise(r => setTimeout(r, 250));
-
-    const landmarks = results.faceLandmarks[0];
-    const analysis = analyzeQuantum(landmarks);
-    if (!analysis) throw new Error("محاسبه ویژگی‌های صورت ناموفق بود.");
-
-    const tilt = Math.abs(Math.atan2(landmarks[152].x - landmarks[10].x, landmarks[152].y - landmarks[10].y));
-    if (tilt > 0.35) {
-      els.errorBox.textContent = "⚠️ هشدار: سر شما کج است — نتایج ممکن است دقت کمتری داشته باشند.";
-      els.errorBox.classList.add("alert--warn","is-visible");
-    }
-
-    const suitableStyles = HAIRSTYLES.filter(s => s.shapes.includes(analysis.shape));
-    lastResult = { analysis, styles: suitableStyles };
-
-    els.progressFill.style.width = "100%";
-    els.loadingText.textContent = "⚛ تحلیل کامل شد — فروریزش تابع موج ✓";
-    await new Promise(r => setTimeout(r, 300));
-
-    drawFaceMesh(els.meshCanvas, imgElement, landmarks);
-    els.previewBadge.hidden = false;
-
-    renderResults();
-    if (navigator.vibrate) navigator.vibrate([20, 50, 20]);
-
-  } catch (err) {
-    console.error(err);
-    els.upload.style.display = "block";
-    els.loading.style.display = "none";
-    els.analyzeBtn.disabled = false;
-    els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره";
-    els.errorBox.textContent = "⚠️ خطا: " + (err.message || err);
-    els.errorBox.classList.add("alert--error","is-visible");
-    toast("تحلیل ناموفق بود — دوباره تلاش کنید");
-  }
-}
-
-function renderResults() {
-  const { analysis, styles } = lastResult;
-  const shapeFa = SHAPE_FA[analysis.shape];
-  const shapeEn = SHAPE_EN[analysis.shape];
-  const pct = Math.round(analysis.confidence * 100);
-
-  els.resultHeader.innerHTML = `
-    <div class="result__shape">
-      <span class="result__shape-label">⚛ فرم صورت شما (پس از فروریزش تابع موج)</span>
-      <span class="result__shape-value">${shapeFa}</span>
-      <span class="result__shape-en">${shapeEn}</span>
-    </div>
-    <div class="conf">
-      <span class="conf__bar">
-        <span class="conf__fill" id="conf-fill" style="width:0%"></span>
-      </span>
-      <span class="conf__pct">${pct}% اطمینان</span>
-    </div>
-    <div class="prob-chart">
-      <div class="prob-chart__title">توزیع احتمال کوانتومی فرم‌ها</div>
-      ${SHAPES.map((s, i) => `
-        <div class="prob-row ${i === SHAPES.indexOf(analysis.shape) ? 'prob-row--top' : ''}">
-          <span class="prob-label">${SHAPE_FA[s]}</span>
-          <div class="prob-bar"><div class="prob-fill" data-pct="${(analysis.posterior[i] * 100).toFixed(1)}"></div></div>
-          <span class="prob-pct">${(analysis.posterior[i] * 100).toFixed(1)}%</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
-
-  const entropyPct = Math.round(analysis.entropy * 100);
-  const cohPct = Math.round(analysis.coherence * 100);
-  const goldPct = Math.round(analysis.goldenScore * 100);
-  const symPct = Math.round(analysis.symmetryScore * 100);
-  const entropyLabel = analysis.entropy < 0.4 ? "قطعی" : analysis.entropy < 0.7 ? "متوسط" : "نامطمئن";
-
-  els.quantumPanel.innerHTML = `
-    <div class="quantum-box">
-      <div class="quantum-box__title">پارامترهای حالت کوانتومی</div>
-      <div class="quantum-metrics">
-        <div class="qm"><span class="qm__label">آنتروپی (عدم‌قطعیت)</span><span class="qm__val qm__val--qu">${entropyPct}% · ${entropyLabel}</span></div>
-        <div class="qm"><span class="qm__label">همدوسی کوانتومی</span><span class="qm__val qm__val--qu">${cohPct}%</span></div>
-        <div class="qm"><span class="qm__label">نسبت طلایی</span><span class="qm__val ${goldPct > 70 ? 'qm__val--ok' : 'qm__val--warn'}">${goldPct}%</span></div>
-        <div class="qm"><span class="qm__label">تقارن چهره</span><span class="qm__val ${symPct > 70 ? 'qm__val--ok' : 'qm__val--warn'}">${symPct}%</span></div>
-        <div class="qm" style="grid-column:1/-1"><span class="qm__label">ویژگی تعیین‌کننده</span><span class="qm__val qm__val--qu">${analysis.topFeature}</span></div>
-      </div>
-    </div>
-  `;
-
-  renderStyles(styles);
-  els.loading.style.display = "none";
-  els.result.classList.add("is-visible");
-
-  requestAnimationFrame(() => {
-    const cf = $("conf-fill");
-    if (cf) cf.style.width = pct + "%";
-    document.querySelectorAll(".prob-fill[data-pct]").forEach((el, i) => {
-      setTimeout(() => { el.style.width = el.dataset.pct + "%"; }, 100 + i * 60);
-    });
-  });
-}
-
-function renderStyles(styles) {
-  const filtered = styles.filter(s => {
-    if (prefs.length !== "all" && s.len !== prefs.length) return false;
-    if (prefs.vibe !== "all" && s.vibe !== prefs.vibe) return false;
-    return true;
-  });
-
-  els.styleCount.textContent = `${filtered.length} مدل کوانتومی پیشنهادی`;
-  if (filtered.length === 0) {
-    els.stylesList.innerHTML = `<div class="empty">با این فیلترها مدل کوانتومی‌ای پیدا نشد. فیلترها را تغییر دهید.</div>`;
-    return;
-  }
-
-  let favorites = [];
-  try { favorites = JSON.parse(localStorage.getItem("headline_favs") || "[]"); } catch(e) { favorites = []; }
-
-  els.stylesList.innerHTML = filtered.map((s, i) => {
-    const searchQuery = "men's " + s.en + " haircut";
-    const imgLink = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(searchQuery)}`;
-    return `
-    <div class="style-card" style="animation-delay:${i * 40}ms">
-      <img src="${s.img || FALLBACK_IMG}" alt="${s.fa}" class="style-img" onerror="this.src='${FALLBACK_IMG}'">
-      <div class="style-body">
-        <strong class="style-title">${s.fa}<span class="style-title-en">${s.en}</span></strong>
-        <p class="style-why">⚛ ${s.why}</p>
-        <div class="style-tags">
-          <span class="tag">${LEN_FA[s.len]}</span>
-          <span class="tag">${VIBE_FA[s.vibe]}</span>
-          <a href="${imgLink}" target="_blank" rel="noopener" class="tag tag--img">🔍 دیدن عکس</a>
-          <button class="tag tag--fav ${favorites.includes(s.id) ? 'is-active' : ''}"
-                  data-fav="${s.id}" type="button" aria-label="ذخیره">${favorites.includes(s.id) ? '★' : '☆'} ذخیره</button>
-        </div>
-      </div>
-    </div>
-  `}).join("");
-
-  els.stylesList.querySelectorAll("[data-fav]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const id = btn.dataset.fav;
-      let favs = [];
-      try { favs = JSON.parse(localStorage.getItem("headline_favs") || "[]"); } catch(e) {}
-      const idx = favs.indexOf(id);
-      if (idx >= 0) { favs.splice(idx, 1); btn.classList.remove("is-active"); btn.innerHTML = "☆ ذخیره"; }
-      else { favs.push(id); btn.classList.add("is-active"); btn.innerHTML = "★ ذخیره شد"; toast("به علاقه‌مندی‌ها اضافه شد"); }
-      try { localStorage.setItem("headline_favs", JSON.stringify(favs)); } catch(e) {}
-    });
-  });
-}
-
-els.galleryInput.addEventListener("change", e => setFile(e.target.files?.[0]));
-
-els.removeBtn.addEventListener("click", () => {
-  els.preview.classList.remove("is-visible");
-  els.previewImg.src = "";
-  els.meshCanvas.width = 0;
-  els.meshCanvas.height = 0;
-  els.previewBadge.hidden = true;
-  els.analyzeBtn.disabled = true;
-  els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره";
-  if (objectUrl) { URL.revokeObjectURL(objectUrl); objectUrl = null; }
-  lastImageEl = null;
-});
-
-els.analyzeBtn.addEventListener("click", () => {
-  if (lastImageEl) runAnalysis(lastImageEl);
-  else if (els.previewImg.src && els.previewImg.complete) runAnalysis(els.previewImg);
-});
-
-els.restartBtn.addEventListener("click", () => {
-  els.result.classList.remove("is-visible");
-  els.upload.style.display = "block";
-  els.preview.classList.remove("is-visible");
-  els.previewImg.src = "";
-  els.meshCanvas.width = 0;
-  els.meshCanvas.height = 0;
-  els.previewBadge.hidden = true;
-  els.loading.style.display = "none";
-  els.errorBox.classList.remove("is-visible","alert--warn","alert--error");
-  els.analyzeBtn.textContent = "⚛ تحلیل فوق‌کوانتومی چهره";
-  els.analyzeBtn.disabled = true;
-  els.progressFill.style.width = "0%";
-  lastResult = null;
-  lastImageEl = null;
-  if (objectUrl) { URL.revokeObjectURL(objectUrl); objectUrl = null; }
-  els.galleryInput.value = "";
-});
-
-els.shareBtn.addEventListener("click", async () => {
-  if (!lastResult) return;
-  const { analysis, styles } = lastResult;
-  const text = `⚛ نتیجه تحلیل کوانتومی هد لاین:\nفرم صورت: ${SHAPE_FA[analysis.shape]} (${SHAPE_EN[analysis.shape]})\nاطمینان: ${Math.round(analysis.confidence * 100)}%\nنسبت طلایی: ${Math.round(analysis.goldenScore * 100)}%\n\nمدل‌های پیشنهادی:\n${styles.slice(0, 5).map((s, i) => `${i + 1}. ${s.fa} (${s.en})`).join("\n")}\n\n— Headline Pro Quantum`;
-  if (navigator.share) {
-    try { await navigator.share({ title: "هد لاین — تحلیل کوانتومی", text }); return; } catch {}
-  }
-  try {
-    await navigator.clipboard.writeText(text);
-    toast("نتیجه در کلیپ‌بورد کپی شد ✓");
-  } catch {
-    toast("اشتراک‌گذاری پشتیبانی نمی‌شود");
-  }
-});
-
-els.prefs.querySelectorAll(".chips").forEach(chipsEl => {
-  const key = chipsEl.dataset.pref;
-  chipsEl.addEventListener("click", e => {
-    const btn = e.target.closest(".chip");
-    if (!btn) return;
-    chipsEl.querySelectorAll(".chip").forEach(c => c.classList.remove("chip--active"));
-    btn.classList.add("chip--active");
-    prefs[key] = btn.dataset.val;
-    if (lastResult) renderStyles(lastResult.styles);
-  });
-});
-
-ensureModel().catch(err => console.warn("Model preload failed:", err));
 </script>
 </body>
 </html>
