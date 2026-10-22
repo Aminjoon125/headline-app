@@ -6,7 +6,8 @@
 <meta name="theme-color" content="#060608">
 <title>هد لاین Pro — مشاور فوق‌کوانتومی مدل مو</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap');
+  /* اضافه شدن فونت نستعلیق برای تیتر */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Vazirmatn:wght@400;500;700;800;900&display=swap');
 
   :root{
     --p:#8b6f4e;--pd:#6d5640;--pl:#a98a68;--bg:#f5f2ee;--sf:#fff;
@@ -38,31 +39,34 @@
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth}
 
-  /* ═══════════ ✦ پس‌زمینه مهندسی مشکی HEADLINE ✦ ═══════════ */
+  /* ═══════════ ✦ پس‌زمینه مهندسی لوکس ✦ ═══════════ */
   body{
     margin:0;min-height:100dvh;background-color:var(--bg);color:var(--tx);
     font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.65;padding:16px 16px 32px;
     background-image:
-      radial-gradient(circle 900px at 12% 0%, var(--glow-gold) 0%, transparent 55%),
-      radial-gradient(circle 800px at 90% 100%, var(--glow-purple) 0%, transparent 55%),
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size:auto,auto,44px 44px,44px 44px;
-    background-attachment:fixed;
+      linear-gradient(rgba(6,6,8,0.85), rgba(6,6,8,0.95)),
+      radial-gradient(circle at 15% 15%, rgba(139,111,78,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(124,95,211,0.15) 0%, transparent 40%),
+      url('https://images.unsplash.com/photo-1593702288056-7927b442d0fa?q=80&w=2070&auto=format&fit=crop');
+    background-size:cover;background-position:center;background-attachment:fixed;
     transition:background-color .4s,color .4s;
     position:relative;overflow-x:hidden;
     -webkit-tap-highlight-color:transparent;
   }
-  [data-theme="dark"] body{
+  [data-theme="light"] body{
     background-image:
-      radial-gradient(circle 900px at 12% 0%, var(--glow-gold) 0%, transparent 55%),
-      radial-gradient(circle 800px at 90% 100%, var(--glow-purple) 0%, transparent 55%),
-      radial-gradient(circle 700px at 50% 50%, rgba(91,63,168,.07) 0%, transparent 70%),
+      linear-gradient(rgba(245,242,238,0.90), rgba(245,242,238,0.95)),
+      radial-gradient(circle at 15% 15%, rgba(139,111,78,0.10) 0%, transparent 40%),
+      url('https://images.unsplash.com/photo-1593702288056-7927b442d0fa?q=80&w=2070&auto=format&fit=crop');
+  }
+  
+  /* خطوط شبکه‌ای مهندسی روی پس‌زمینه */
+  body::after {
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
       linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-      linear-gradient(rgba(124,95,211,.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(124,95,211,.025) 1px, transparent 1px);
-    background-size:auto,auto,auto,48px 48px,48px 48px,12px 12px,12px 12px;
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size:40px 40px;
   }
 
   /* ─── واترمارک OUTLINE لوکس HEADLINE ─── */
@@ -103,31 +107,44 @@
     border-right:2px solid var(--bracket2);
   }
 
-  /* ═══════════ Header ═══════════ */
-  .header{text-align:center;margin-bottom:20px;position:relative;padding:14px 0 18px}
+  /* ═══════════ Header & Nastaliq Title ═══════════ */
+  .header{text-align:center;margin-bottom:24px;position:relative;padding:10px 0 20px}
   .header::after{
     content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-    width:55%;height:1px;
+    width:60%;height:1px;
     background:linear-gradient(90deg,transparent,var(--p),var(--qu),var(--p),transparent);
-    opacity:.55;
+    opacity:.6;
   }
-  h1{margin:0;font-size:2.5rem;font-weight:900;line-height:1;
-     background:var(--gradq);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-     background-clip:text;letter-spacing:-1px;
-     animation:titleGlow 4s ease-in-out infinite alternate}
+  
+  /* فونت نستعلیق و رنگ مشکی برای تیتر */
+  h1{
+    margin:0;font-size:3.2rem;font-weight:700;line-height:2; /* ارتفاع بیشتر برای نستعلیق */
+    font-family: 'Noto Nastaliq Urdu', serif; /* فونت نستعلیق */
+    color: #111; /* مشکی توپر در حالت روشن */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: titleGlow 4s ease-in-out infinite alternate;
+  }
+  [data-theme="dark"] h1 {
+    color: #fff; /* سفید درخشان در حالت تاریک */
+    text-shadow: 0 4px 20px rgba(255,255,255,0.15), 0 0 40px rgba(124,95,211,0.3);
+  }
+  
   @keyframes titleGlow{
-    0%{filter:drop-shadow(0 0 6px rgba(124,95,211,.20))}
-    100%{filter:drop-shadow(0 0 18px rgba(124,95,211,.45))}
+    0%{filter:drop-shadow(0 0 2px rgba(124,95,211,.1))}
+    100%{filter:drop-shadow(0 0 10px rgba(124,95,211,.3))}
   }
-  .h1-en{display:block;font-size:.82rem;font-weight:600;color:var(--mu);
-     letter-spacing:8px;margin-top:6px;-webkit-text-fill-color:var(--mu);
-     text-indent:8px}
-  .h1-sub{display:block;font-size:.7rem;color:var(--qu);letter-spacing:3px;margin-top:4px;font-weight:700}
+  
+  .h1-en{
+    display:block;font-size:.85rem;font-weight:800;color:var(--mu);
+    letter-spacing:8px;margin-top:-10px;-webkit-text-fill-color:var(--mu);
+    text-indent:8px; font-family: 'Vazirmatn', sans-serif;
+  }
+  .h1-sub{display:block;font-size:.75rem;color:var(--qu);letter-spacing:3px;margin-top:4px;font-weight:700}
 
   /* Theme toggle */
-  .theme-btn{position:absolute;top:8px;inset-inline-end:0;width:40px;height:40px;
+  .theme-btn{position:absolute;top:8px;inset-inline-end:0;width:44px;height:44px;
      border-radius:50%;background:var(--sf);border:1px solid var(--bd);cursor:pointer;
-     font-size:1.1rem;display:grid;place-items:center;box-shadow:var(--sh);
+     font-size:1.2rem;display:grid;place-items:center;box-shadow:var(--sh);
      transition:transform .2s,background .2s;z-index:10;color:var(--tx)}
   .theme-btn:active{transform:scale(.92)}
   [data-theme="dark"] .theme-btn{border-color:rgba(139,111,78,.3)}
@@ -326,7 +343,7 @@
 
   [hidden]{display:none!important}
   @media (max-width:380px){
-    h1{font-size:2rem}
+    h1{font-size:2.6rem}
     .result-actions{grid-template-columns:1fr}
     .quantum-metrics{grid-template-columns:1fr}
     .style-img{width:60px;height:60px}
@@ -546,7 +563,7 @@ els.themeToggle.addEventListener("click", () => {
   const cur = document.documentElement.getAttribute("data-theme");
   const next = cur === "dark" ? "light" : "dark";
   if (next === "dark") document.documentElement.setAttribute("data-theme","dark");
-  else document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", "light"); // اصلاح شد
   els.themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
   localStorage.setItem("headline_theme", next);
 });
