@@ -1,5 +1,5 @@
 """
-headline_app.py — نسخه‌ی کوانتومی «هد لاین» (v4.2-QUANTUM, Ultimate UI)
+headline_app.py — نسخه‌ی کوانتومی «هد لاین» (v4.3-QUANTUM, Ultimate Fix)
 """
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ class Config:
     n_mc_samples: int = int(os.getenv("N_MC_SAMPLES", "20"))
     mc_noise_std: float = float(os.getenv("MC_NOISE_STD", "0.015"))
     prior_strength: float = float(os.getenv("PRIOR_STRENGTH", "0.12"))
-    engine_version: str = "quantum-v4.2"
+    engine_version: str = "quantum-v4.3"
 
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO").upper(),
@@ -777,7 +777,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
 <div class="container">
   <header class="header">
     <h1>هد لاین <span class="h1-en">HEADLINE</span></h1>
-    <span class="badge">v4.2 موتور کوانتومی</span>
+    <span class="badge">v4.3 موتور کوانتومی</span>
   </header>
 
   <section id="step-upload">
@@ -858,7 +858,7 @@ INDEX_HTML = r"""<!DOCTYPE html>
   "use strict";
   const CONFIG = Object.freeze({
     API_PATH: "/api/v1/analyze",
-    TIMEOUT_MS: 45000, MAX_FILE_MB: 10, MIN_SIDE: 240,
+    TIMEOUT_MS: 120000, MAX_FILE_MB: 10, MIN_SIDE: 240,
     ALLOWED_TYPES: ["image/jpeg", "image/png", "image/webp"],
   });
   const SHAPE_FA = {oval:"بیضی",round:"گرد",square:"مربعی",heart:"قلبی",oblong:"کشیده",diamond:"الماس",triangle:"مثلثی"};
